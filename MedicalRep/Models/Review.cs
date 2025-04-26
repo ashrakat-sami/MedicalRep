@@ -2,6 +2,7 @@
 {
     public class Review
     {
+        public int Id { get; set; }
         public int DoctorId { get; set; }  // Foreign Key to Doctor
         public int ProductId { get; set; } // Foreign Key to Product
         public ApplicationUser Doctor { get; set; } // Navigation Property

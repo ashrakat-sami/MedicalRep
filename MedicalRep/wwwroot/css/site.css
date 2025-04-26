@@ -1,4 +1,4 @@
-html {
+﻿html {
   font-size: 14px;
 }
 
@@ -20,3 +20,105 @@ html {
 body {
   margin-bottom: 60px;
 }
+.custom-navbar {
+    background-color: #1F2B6C !important; 
+}
+
+    .custom-navbar .navbar-brand {
+        color: white !important;
+    }
+
+    .custom-navbar .nav-link {
+        color: white !important;
+    }
+
+        .custom-navbar .nav-link:hover {
+            color: #cccccc ; 
+        }
+
+    .custom-navbar .navbar-toggler-icon {
+        background-color: #BFD2F8 !important;
+    }
+
+    .custom-navbar .form-control {
+        border-radius: 15px;
+        border: none;
+        background-color: #BFD2F8 !important;
+    }
+
+    .custom-navbar .btn-outline-success {
+        border-radius: 20px;
+        border: none;
+        color: white;
+    }
+
+        .custom-navbar .btn-outline-success:hover {
+            background-color: #BFD2F8;
+            color: #1F2B6C;
+        }
+
+.custom-footer {
+    background-color: #1F2B6C !important; /* لون أزرق غامق مشابه */
+    color: white !important;
+    padding-top: 10px;
+    padding-bottom: 5px;
+    
+}
+
+    .custom-footer h3,
+    .custom-footer h5 {
+        color: white;
+        margin-bottom: 10px;
+    }
+
+    .custom-footer p,
+    .custom-footer a {
+        color: #cccccc;
+        text-decoration: none;
+    }
+
+        .custom-footer a:hover {
+            color: white;
+        }
+
+    .custom-footer .list-unstyled, .contact {
+        line-height:20px;
+    }
+
+    .custom-footer .input-group .form-control {
+        border-radius: 5px 0 0 5px;
+        border: none;
+        background-color: white;
+        color: white;
+    }
+
+        .custom-footer .input-group .form-control::placeholder {
+            color: #1F2B6C;
+        }
+
+    .custom-footer .input-group .btn {
+        border-radius: 0 5px 5px 0;
+        border: none;
+        background-color: #007bff; /* لون زر الإرسال */
+        color: white;
+    }
+
+        .custom-footer .input-group .btn:hover {
+            background-color: #0056b3;
+        }
+
+.footer-divider {
+    border-top: 1px solid #6c757d;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.social-icon {
+    font-size: 1.5rem;
+    margin-left: 5px;
+    color: #cccccc;
+}
+
+    .social-icon:hover {
+        color: white;
+    }

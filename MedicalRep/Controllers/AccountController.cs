@@ -1,10 +1,4 @@
-﻿using MedicalRep.ViewModels;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using System.Security.Claims;
-using System.Threading.Tasks;
-
-namespace MedicalRep.Controllers
+﻿namespace MedicalRep.Controllers
 {
     public class AccountController : Controller
     {
@@ -17,9 +11,20 @@ namespace MedicalRep.Controllers
             this.signInManager = signInManager;
         }
         [HttpGet]
-        public IActionResult  Register()
+        public async Task<IActionResult> Register()
         {
-            return View();
+            //var roles = await userManager.GetRolesAsync(new ApplicationUser()); 
+                                                                               
+            //var rolesList = new List<SelectListItem>
+            //{
+            //    new SelectListItem { Value = "MedicalRep", Text = "MedicalRep" },
+            //    new SelectListItem { Value = "Doctor", Text = "Doctor" }
+            //};
+            //var model = new RegisterViewModel
+            //{
+            //    Roles = rolesList
+            //};
+            return View(/*model*/);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -45,7 +50,14 @@ namespace MedicalRep.Controllers
                 {
                     ModelState.AddModelError("", error.Description);
                 }
+
             }
+            // لو حصل Error ورجعت لنفس الصفحة محتاج تبعت الرولز تاني
+            //newUser.Roles = new List<SelectListItem>
+            //{
+            //    new SelectListItem { Value = "Admin", Text = "Admin" },
+            //    new SelectListItem { Value = "User", Text = "User" }
+            //};
             return View(newUser);
         }
         [HttpGet]

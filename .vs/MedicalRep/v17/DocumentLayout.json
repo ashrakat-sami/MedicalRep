@@ -1,54 +1,50 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\AYA MAHMOUD\\source\\repos\\MedicalRep\\",
+  "WorkspaceRootPath": "C:\\Users\\Ashrakat\\Desktop\\Projects\\MedicalRep\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A7A57CA1-0503-4F34-B133-384EA12A1582}|MedicalRep\\MedicalRep.csproj|c:\\users\\aya mahmoud\\source\\repos\\medicalrep\\medicalrep\\viewmodels\\registerviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A7A57CA1-0503-4F34-B133-384EA12A1582}|MedicalRep\\MedicalRep.csproj|solutionrelative:medicalrep\\viewmodels\\registerviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A7A57CA1-0503-4F34-B133-384EA12A1582}|MedicalRep\\MedicalRep.csproj|c:\\users\\ashrakat\\desktop\\projects\\medicalrep\\medicalrep\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{A7A57CA1-0503-4F34-B133-384EA12A1582}|MedicalRep\\MedicalRep.csproj|solutionrelative:medicalrep\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A7A57CA1-0503-4F34-B133-384EA12A1582}|MedicalRep\\MedicalRep.csproj|c:\\users\\aya mahmoud\\source\\repos\\medicalrep\\medicalrep\\models\\applicationuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A7A57CA1-0503-4F34-B133-384EA12A1582}|MedicalRep\\MedicalRep.csproj|c:\\users\\ashrakat\\desktop\\projects\\medicalrep\\medicalrep\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A7A57CA1-0503-4F34-B133-384EA12A1582}|MedicalRep\\MedicalRep.csproj|solutionrelative:medicalrep\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A7A57CA1-0503-4F34-B133-384EA12A1582}|MedicalRep\\MedicalRep.csproj|c:\\users\\ashrakat\\desktop\\projects\\medicalrep\\medicalrep\\views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A7A57CA1-0503-4F34-B133-384EA12A1582}|MedicalRep\\MedicalRep.csproj|solutionrelative:medicalrep\\views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A7A57CA1-0503-4F34-B133-384EA12A1582}|MedicalRep\\MedicalRep.csproj|c:\\users\\ashrakat\\desktop\\projects\\medicalrep\\medicalrep\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A7A57CA1-0503-4F34-B133-384EA12A1582}|MedicalRep\\MedicalRep.csproj|solutionrelative:medicalrep\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A7A57CA1-0503-4F34-B133-384EA12A1582}|MedicalRep\\MedicalRep.csproj|c:\\users\\ashrakat\\desktop\\projects\\medicalrep\\medicalrep\\views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A7A57CA1-0503-4F34-B133-384EA12A1582}|MedicalRep\\MedicalRep.csproj|solutionrelative:medicalrep\\views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A7A57CA1-0503-4F34-B133-384EA12A1582}|MedicalRep\\MedicalRep.csproj|c:\\users\\ashrakat\\desktop\\projects\\medicalrep\\medicalrep\\models\\applicationuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A7A57CA1-0503-4F34-B133-384EA12A1582}|MedicalRep\\MedicalRep.csproj|solutionrelative:medicalrep\\models\\applicationuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A7A57CA1-0503-4F34-B133-384EA12A1582}|MedicalRep\\MedicalRep.csproj|c:\\users\\aya mahmoud\\source\\repos\\medicalrep\\medicalrep\\models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A7A57CA1-0503-4F34-B133-384EA12A1582}|MedicalRep\\MedicalRep.csproj|solutionrelative:medicalrep\\models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A7A57CA1-0503-4F34-B133-384EA12A1582}|MedicalRep\\MedicalRep.csproj|c:\\users\\aya mahmoud\\source\\repos\\medicalrep\\medicalrep\\models\\visit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A7A57CA1-0503-4F34-B133-384EA12A1582}|MedicalRep\\MedicalRep.csproj|solutionrelative:medicalrep\\models\\visit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A7A57CA1-0503-4F34-B133-384EA12A1582}|MedicalRep\\MedicalRep.csproj|c:\\users\\aya mahmoud\\source\\repos\\medicalrep\\medicalrep\\models\\specialization.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A7A57CA1-0503-4F34-B133-384EA12A1582}|MedicalRep\\MedicalRep.csproj|solutionrelative:medicalrep\\models\\specialization.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A7A57CA1-0503-4F34-B133-384EA12A1582}|MedicalRep\\MedicalRep.csproj|c:\\users\\aya mahmoud\\source\\repos\\medicalrep\\medicalrep\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A7A57CA1-0503-4F34-B133-384EA12A1582}|MedicalRep\\MedicalRep.csproj|solutionrelative:medicalrep\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A7A57CA1-0503-4F34-B133-384EA12A1582}|MedicalRep\\MedicalRep.csproj|c:\\users\\aya mahmoud\\source\\repos\\medicalrep\\medicalrep\\models\\review.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A7A57CA1-0503-4F34-B133-384EA12A1582}|MedicalRep\\MedicalRep.csproj|solutionrelative:medicalrep\\models\\review.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A7A57CA1-0503-4F34-B133-384EA12A1582}|MedicalRep\\MedicalRep.csproj|c:\\users\\aya mahmoud\\source\\repos\\medicalrep\\medicalrep\\views\\account\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A7A57CA1-0503-4F34-B133-384EA12A1582}|MedicalRep\\MedicalRep.csproj|solutionrelative:medicalrep\\views\\account\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A7A57CA1-0503-4F34-B133-384EA12A1582}|MedicalRep\\MedicalRep.csproj|c:\\users\\aya mahmoud\\source\\repos\\medicalrep\\medicalrep\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A7A57CA1-0503-4F34-B133-384EA12A1582}|MedicalRep\\MedicalRep.csproj|solutionrelative:medicalrep\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A7A57CA1-0503-4F34-B133-384EA12A1582}|MedicalRep\\MedicalRep.csproj|c:\\users\\aya mahmoud\\source\\repos\\medicalrep\\medicalrep\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A7A57CA1-0503-4F34-B133-384EA12A1582}|MedicalRep\\MedicalRep.csproj|c:\\users\\ashrakat\\desktop\\projects\\medicalrep\\medicalrep\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A7A57CA1-0503-4F34-B133-384EA12A1582}|MedicalRep\\MedicalRep.csproj|solutionrelative:medicalrep\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A7A57CA1-0503-4F34-B133-384EA12A1582}|MedicalRep\\MedicalRep.csproj|c:\\users\\aya mahmoud\\source\\repos\\medicalrep\\medicalrep\\views\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A7A57CA1-0503-4F34-B133-384EA12A1582}|MedicalRep\\MedicalRep.csproj|solutionrelative:medicalrep\\views\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{A7A57CA1-0503-4F34-B133-384EA12A1582}|MedicalRep\\MedicalRep.csproj|c:\\users\\ashrakat\\desktop\\projects\\medicalrep\\medicalrep\\views\\account\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A7A57CA1-0503-4F34-B133-384EA12A1582}|MedicalRep\\MedicalRep.csproj|solutionrelative:medicalrep\\views\\account\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A7A57CA1-0503-4F34-B133-384EA12A1582}|MedicalRep\\MedicalRep.csproj|c:\\users\\aya mahmoud\\source\\repos\\medicalrep\\medicalrep\\viewmodels\\loginviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A7A57CA1-0503-4F34-B133-384EA12A1582}|MedicalRep\\MedicalRep.csproj|solutionrelative:medicalrep\\viewmodels\\loginviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A7A57CA1-0503-4F34-B133-384EA12A1582}|MedicalRep\\MedicalRep.csproj|c:\\users\\ashrakat\\desktop\\projects\\medicalrep\\medicalrep\\viewmodels\\registerviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A7A57CA1-0503-4F34-B133-384EA12A1582}|MedicalRep\\MedicalRep.csproj|solutionrelative:medicalrep\\viewmodels\\registerviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A7A57CA1-0503-4F34-B133-384EA12A1582}|MedicalRep\\MedicalRep.csproj|c:\\users\\ashrakat\\desktop\\projects\\medicalrep\\medicalrep\\data\\migrations\\20250426160307_addtables.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A7A57CA1-0503-4F34-B133-384EA12A1582}|MedicalRep\\MedicalRep.csproj|solutionrelative:medicalrep\\data\\migrations\\20250426160307_addtables.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A7A57CA1-0503-4F34-B133-384EA12A1582}|MedicalRep\\MedicalRep.csproj|c:\\users\\ashrakat\\desktop\\projects\\medicalrep\\medicalrep\\globalusing.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A7A57CA1-0503-4F34-B133-384EA12A1582}|MedicalRep\\MedicalRep.csproj|solutionrelative:medicalrep\\globalusing.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -58,20 +54,90 @@
       "DocumentGroups": [
         {
           "DockedHeight": 200,
-          "SelectedChildIndex": 11,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "LoginViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\AYA MAHMOUD\\source\\repos\\MedicalRep\\MedicalRep\\ViewModels\\LoginViewModel.cs",
-              "RelativeDocumentMoniker": "MedicalRep\\ViewModels\\LoginViewModel.cs",
-              "ToolTip": "C:\\Users\\AYA MAHMOUD\\source\\repos\\MedicalRep\\MedicalRep\\ViewModels\\LoginViewModel.cs",
-              "RelativeToolTip": "MedicalRep\\ViewModels\\LoginViewModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "DocumentIndex": 10,
+              "Title": "GlobalUsing.cs",
+              "DocumentMoniker": "C:\\Users\\Ashrakat\\Desktop\\Projects\\MedicalRep\\MedicalRep\\GlobalUsing.cs",
+              "RelativeDocumentMoniker": "MedicalRep\\GlobalUsing.cs",
+              "ToolTip": "C:\\Users\\Ashrakat\\Desktop\\Projects\\MedicalRep\\MedicalRep\\GlobalUsing.cs",
+              "RelativeToolTip": "MedicalRep\\GlobalUsing.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-26T11:50:22.249Z",
-              "IsPinned": true
+              "WhenOpened": "2025-04-26T15:43:27.013Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\Ashrakat\\Desktop\\Projects\\MedicalRep\\MedicalRep\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "MedicalRep\\Views\\Home\\Index.cshtml",
+              "ToolTip": "C:\\Users\\Ashrakat\\Desktop\\Projects\\MedicalRep\\MedicalRep\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "MedicalRep\\Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-26T17:24:11.671Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "site.css",
+              "DocumentMoniker": "C:\\Users\\Ashrakat\\Desktop\\Projects\\MedicalRep\\MedicalRep\\wwwroot\\css\\site.css",
+              "RelativeDocumentMoniker": "MedicalRep\\wwwroot\\css\\site.css",
+              "ToolTip": "C:\\Users\\Ashrakat\\Desktop\\Projects\\MedicalRep\\MedicalRep\\wwwroot\\css\\site.css",
+              "RelativeToolTip": "MedicalRep\\wwwroot\\css\\site.css",
+              "ViewState": "AgIAAEcAAAAAAAAAAAAowFMAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-04-26T16:54:31.85Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\Ashrakat\\Desktop\\Projects\\MedicalRep\\MedicalRep\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "MedicalRep\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\Ashrakat\\Desktop\\Projects\\MedicalRep\\MedicalRep\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "MedicalRep\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAADEAAAAAAAAAAADwv0AAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-26T16:20:49.232Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "_ViewImports.cshtml",
+              "DocumentMoniker": "C:\\Users\\Ashrakat\\Desktop\\Projects\\MedicalRep\\MedicalRep\\Views\\_ViewImports.cshtml",
+              "RelativeDocumentMoniker": "MedicalRep\\Views\\_ViewImports.cshtml",
+              "ToolTip": "C:\\Users\\Ashrakat\\Desktop\\Projects\\MedicalRep\\MedicalRep\\Views\\_ViewImports.cshtml",
+              "RelativeToolTip": "MedicalRep\\Views\\_ViewImports.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-26T16:20:42.827Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "_ViewStart.cshtml",
+              "DocumentMoniker": "C:\\Users\\Ashrakat\\Desktop\\Projects\\MedicalRep\\MedicalRep\\Views\\_ViewStart.cshtml",
+              "RelativeDocumentMoniker": "MedicalRep\\Views\\_ViewStart.cshtml",
+              "ToolTip": "C:\\Users\\Ashrakat\\Desktop\\Projects\\MedicalRep\\MedicalRep\\Views\\_ViewStart.cshtml",
+              "RelativeToolTip": "MedicalRep\\Views\\_ViewStart.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-26T16:20:31.988Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             },
             {
               "$type": "Bookmark",
@@ -99,142 +165,68 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ErrorViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\AYA MAHMOUD\\source\\repos\\MedicalRep\\MedicalRep\\Models\\ErrorViewModel.cs",
-              "RelativeDocumentMoniker": "MedicalRep\\Models\\ErrorViewModel.cs",
-              "ToolTip": "C:\\Users\\AYA MAHMOUD\\source\\repos\\MedicalRep\\MedicalRep\\Models\\ErrorViewModel.cs",
-              "RelativeToolTip": "MedicalRep\\Models\\ErrorViewModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 9,
+              "Title": "20250426160307_AddTables.cs",
+              "DocumentMoniker": "C:\\Users\\Ashrakat\\Desktop\\Projects\\MedicalRep\\MedicalRep\\Data\\Migrations\\20250426160307_AddTables.cs",
+              "RelativeDocumentMoniker": "MedicalRep\\Data\\Migrations\\20250426160307_AddTables.cs",
+              "ToolTip": "C:\\Users\\Ashrakat\\Desktop\\Projects\\MedicalRep\\MedicalRep\\Data\\Migrations\\20250426160307_AddTables.cs",
+              "RelativeToolTip": "MedicalRep\\Data\\Migrations\\20250426160307_AddTables.cs",
+              "ViewState": "AgIAAF4AAAAAAAAAAAAQwHMAAABHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-26T13:24:54.634Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Specialization.cs",
-              "DocumentMoniker": "C:\\Users\\AYA MAHMOUD\\source\\repos\\MedicalRep\\MedicalRep\\Models\\Specialization.cs",
-              "RelativeDocumentMoniker": "MedicalRep\\Models\\Specialization.cs",
-              "ToolTip": "C:\\Users\\AYA MAHMOUD\\source\\repos\\MedicalRep\\MedicalRep\\Models\\Specialization.cs",
-              "RelativeToolTip": "MedicalRep\\Models\\Specialization.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAABcAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-26T12:54:15.59Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Visit.cs",
-              "DocumentMoniker": "C:\\Users\\AYA MAHMOUD\\source\\repos\\MedicalRep\\MedicalRep\\Models\\Visit.cs",
-              "RelativeDocumentMoniker": "MedicalRep\\Models\\Visit.cs",
-              "ToolTip": "C:\\Users\\AYA MAHMOUD\\source\\repos\\MedicalRep\\MedicalRep\\Models\\Visit.cs",
-              "RelativeToolTip": "MedicalRep\\Models\\Visit.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-26T12:56:40.111Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ApplicationUser.cs",
-              "DocumentMoniker": "C:\\Users\\AYA MAHMOUD\\source\\repos\\MedicalRep\\MedicalRep\\Models\\ApplicationUser.cs",
-              "RelativeDocumentMoniker": "MedicalRep\\Models\\ApplicationUser.cs",
-              "ToolTip": "C:\\Users\\AYA MAHMOUD\\source\\repos\\MedicalRep\\MedicalRep\\Models\\ApplicationUser.cs",
-              "RelativeToolTip": "MedicalRep\\Models\\ApplicationUser.cs",
-              "ViewState": "AgIAAAcAAAAAAAAAAAAAABcAAAA6AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-26T12:14:28.848Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "RegisterViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\AYA MAHMOUD\\source\\repos\\MedicalRep\\MedicalRep\\ViewModels\\RegisterViewModel.cs",
-              "RelativeDocumentMoniker": "MedicalRep\\ViewModels\\RegisterViewModel.cs",
-              "ToolTip": "C:\\Users\\AYA MAHMOUD\\source\\repos\\MedicalRep\\MedicalRep\\ViewModels\\RegisterViewModel.cs",
-              "RelativeToolTip": "MedicalRep\\ViewModels\\RegisterViewModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAlAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-26T11:44:21.287Z",
+              "WhenOpened": "2025-04-26T16:03:08.106Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "Product.cs",
-              "DocumentMoniker": "C:\\Users\\AYA MAHMOUD\\source\\repos\\MedicalRep\\MedicalRep\\Models\\Product.cs",
-              "RelativeDocumentMoniker": "MedicalRep\\Models\\Product.cs",
-              "ToolTip": "C:\\Users\\AYA MAHMOUD\\source\\repos\\MedicalRep\\MedicalRep\\Models\\Product.cs",
-              "RelativeToolTip": "MedicalRep\\Models\\Product.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAqAAAAAAAAAA==",
+              "Title": "ApplicationUser.cs",
+              "DocumentMoniker": "C:\\Users\\Ashrakat\\Desktop\\Projects\\MedicalRep\\MedicalRep\\Models\\ApplicationUser.cs",
+              "RelativeDocumentMoniker": "MedicalRep\\Models\\ApplicationUser.cs",
+              "ToolTip": "C:\\Users\\Ashrakat\\Desktop\\Projects\\MedicalRep\\MedicalRep\\Models\\ApplicationUser.cs",
+              "RelativeToolTip": "MedicalRep\\Models\\ApplicationUser.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAxAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-26T12:54:13.602Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Review.cs",
-              "DocumentMoniker": "C:\\Users\\AYA MAHMOUD\\source\\repos\\MedicalRep\\MedicalRep\\Models\\Review.cs",
-              "RelativeDocumentMoniker": "MedicalRep\\Models\\Review.cs",
-              "ToolTip": "C:\\Users\\AYA MAHMOUD\\source\\repos\\MedicalRep\\MedicalRep\\Models\\Review.cs",
-              "RelativeToolTip": "MedicalRep\\Models\\Review.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAbAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-26T13:08:55.33Z",
+              "WhenOpened": "2025-04-26T15:59:46.774Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 7,
               "Title": "Register.cshtml",
-              "DocumentMoniker": "C:\\Users\\AYA MAHMOUD\\source\\repos\\MedicalRep\\MedicalRep\\Views\\Account\\Register.cshtml",
+              "DocumentMoniker": "C:\\Users\\Ashrakat\\Desktop\\Projects\\MedicalRep\\MedicalRep\\Views\\Account\\Register.cshtml",
               "RelativeDocumentMoniker": "MedicalRep\\Views\\Account\\Register.cshtml",
-              "ToolTip": "C:\\Users\\AYA MAHMOUD\\source\\repos\\MedicalRep\\MedicalRep\\Views\\Account\\Register.cshtml",
+              "ToolTip": "C:\\Users\\Ashrakat\\Desktop\\Projects\\MedicalRep\\MedicalRep\\Views\\Account\\Register.cshtml",
               "RelativeToolTip": "MedicalRep\\Views\\Account\\Register.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAaAAAAAAAAAA==",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAB0AAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-26T12:00:04.914Z"
+              "WhenOpened": "2025-04-26T15:52:43.074Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "Login.cshtml",
-              "DocumentMoniker": "C:\\Users\\AYA MAHMOUD\\source\\repos\\MedicalRep\\MedicalRep\\Views\\Account\\Login.cshtml",
-              "RelativeDocumentMoniker": "MedicalRep\\Views\\Account\\Login.cshtml",
-              "ToolTip": "C:\\Users\\AYA MAHMOUD\\source\\repos\\MedicalRep\\MedicalRep\\Views\\Account\\Login.cshtml",
-              "RelativeToolTip": "MedicalRep\\Views\\Account\\Login.cshtml",
-              "ViewState": "AgIAAB4AAAAAAAAAAAAAACUAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-26T11:55:00.749Z"
+              "DocumentIndex": 6,
+              "Title": "AccountController.cs",
+              "DocumentMoniker": "C:\\Users\\Ashrakat\\Desktop\\Projects\\MedicalRep\\MedicalRep\\Controllers\\AccountController.cs",
+              "RelativeDocumentMoniker": "MedicalRep\\Controllers\\AccountController.cs",
+              "ToolTip": "C:\\Users\\Ashrakat\\Desktop\\Projects\\MedicalRep\\MedicalRep\\Controllers\\AccountController.cs",
+              "RelativeToolTip": "MedicalRep\\Controllers\\AccountController.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAQwCMAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-26T15:49:43.405Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 8,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\AYA MAHMOUD\\source\\repos\\MedicalRep\\MedicalRep\\Program.cs",
-              "RelativeDocumentMoniker": "MedicalRep\\Program.cs",
-              "ToolTip": "C:\\Users\\AYA MAHMOUD\\source\\repos\\MedicalRep\\MedicalRep\\Program.cs",
-              "RelativeToolTip": "MedicalRep\\Program.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAABsAAAAnAAAAAAAAAA==",
+              "Title": "RegisterViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\Ashrakat\\Desktop\\Projects\\MedicalRep\\MedicalRep\\ViewModels\\RegisterViewModel.cs",
+              "RelativeDocumentMoniker": "MedicalRep\\ViewModels\\RegisterViewModel.cs",
+              "ToolTip": "C:\\Users\\Ashrakat\\Desktop\\Projects\\MedicalRep\\MedicalRep\\ViewModels\\RegisterViewModel.cs",
+              "RelativeToolTip": "MedicalRep\\ViewModels\\RegisterViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAA4AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-26T11:45:18.591Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "AccountController.cs",
-              "DocumentMoniker": "C:\\Users\\AYA MAHMOUD\\source\\repos\\MedicalRep\\MedicalRep\\Controllers\\AccountController.cs",
-              "RelativeDocumentMoniker": "MedicalRep\\Controllers\\AccountController.cs",
-              "ToolTip": "C:\\Users\\AYA MAHMOUD\\source\\repos\\MedicalRep\\MedicalRep\\Controllers\\AccountController.cs",
-              "RelativeToolTip": "MedicalRep\\Controllers\\AccountController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEgAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-26T11:43:55.868Z"
+              "WhenOpened": "2025-04-26T15:48:26.552Z",
+              "EditorCaption": ""
             }
           ]
         },

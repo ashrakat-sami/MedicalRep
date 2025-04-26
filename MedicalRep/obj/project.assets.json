@@ -7769,23 +7769,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\AYA MAHMOUD\\.nuget\\packages\\": {},
+    "C:\\Users\\Ashrakat\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\AYA MAHMOUD\\source\\repos\\MedicalRep\\MedicalRep\\MedicalRep.csproj",
+      "projectUniqueName": "C:\\Users\\Ashrakat\\Desktop\\Projects\\MedicalRep\\MedicalRep\\MedicalRep.csproj",
       "projectName": "MedicalRep",
-      "projectPath": "C:\\Users\\AYA MAHMOUD\\source\\repos\\MedicalRep\\MedicalRep\\MedicalRep.csproj",
-      "packagesPath": "C:\\Users\\AYA MAHMOUD\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\AYA MAHMOUD\\source\\repos\\MedicalRep\\MedicalRep\\obj\\",
+      "projectPath": "C:\\Users\\Ashrakat\\Desktop\\Projects\\MedicalRep\\MedicalRep\\MedicalRep.csproj",
+      "packagesPath": "C:\\Users\\Ashrakat\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Ashrakat\\Desktop\\Projects\\MedicalRep\\MedicalRep\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\AYA MAHMOUD\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Ashrakat\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],

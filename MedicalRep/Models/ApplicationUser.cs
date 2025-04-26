@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity;
-
+﻿
 namespace MedicalRep.Models
 {
     public class ApplicationUser : IdentityUser
@@ -29,7 +28,7 @@ namespace MedicalRep.Models
         public decimal? Salary { get; set; }
 
         // العلاقة مع التقييمات (Reviews)
-        public ICollection<Review> Reviews { get; set; } = new List<Review>();
-        public ICollection<Visit> Visits { get; set; } = new List<Visit>();
+        public ICollection<Review>? Reviews { get; set; } = new List<Review>();
+        public ICollection<Visit>? Visits { get; set; } = new List<Visit>();
     }
 }
