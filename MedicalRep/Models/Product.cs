@@ -10,6 +10,7 @@
 
         public decimal Price { get; set; }
 
+        public ICollection<Review> Reviews { get; set; } = new List<Review>();
 
     }
 }

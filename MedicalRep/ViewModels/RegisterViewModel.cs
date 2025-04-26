@@ -19,7 +19,7 @@ namespace MedicalRep.ViewModels
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
        
-
+        // Add Role (drop down list )
 
 
 
