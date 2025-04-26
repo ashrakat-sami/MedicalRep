@@ -3,8 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\AYA MAHMOUD\\source\\repos\\MedicalRep\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{A7A57CA1-0503-4F34-B133-384EA12A1582}|MedicalRep\\MedicalRep.csproj|c:\\users\\aya mahmoud\\source\\repos\\medicalrep\\medicalrep\\viewmodels\\registerviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A7A57CA1-0503-4F34-B133-384EA12A1582}|MedicalRep\\MedicalRep.csproj|solutionrelative:medicalrep\\viewmodels\\registerviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A7A57CA1-0503-4F34-B133-384EA12A1582}|MedicalRep\\MedicalRep.csproj|c:\\users\\aya mahmoud\\source\\repos\\medicalrep\\medicalrep\\models\\applicationuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A7A57CA1-0503-4F34-B133-384EA12A1582}|MedicalRep\\MedicalRep.csproj|solutionrelative:medicalrep\\models\\applicationuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A7A57CA1-0503-4F34-B133-384EA12A1582}|MedicalRep\\MedicalRep.csproj|c:\\users\\aya mahmoud\\source\\repos\\medicalrep\\medicalrep\\models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A7A57CA1-0503-4F34-B133-384EA12A1582}|MedicalRep\\MedicalRep.csproj|solutionrelative:medicalrep\\models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A7A57CA1-0503-4F34-B133-384EA12A1582}|MedicalRep\\MedicalRep.csproj|c:\\users\\aya mahmoud\\source\\repos\\medicalrep\\medicalrep\\views\\account\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -25,10 +33,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{A7A57CA1-0503-4F34-B133-384EA12A1582}|MedicalRep\\MedicalRep.csproj|c:\\users\\aya mahmoud\\source\\repos\\medicalrep\\medicalrep\\viewmodels\\loginviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A7A57CA1-0503-4F34-B133-384EA12A1582}|MedicalRep\\MedicalRep.csproj|solutionrelative:medicalrep\\viewmodels\\loginviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A7A57CA1-0503-4F34-B133-384EA12A1582}|MedicalRep\\MedicalRep.csproj|c:\\users\\aya mahmoud\\source\\repos\\medicalrep\\medicalrep\\viewmodels\\registerviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A7A57CA1-0503-4F34-B133-384EA12A1582}|MedicalRep\\MedicalRep.csproj|solutionrelative:medicalrep\\viewmodels\\registerviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,8 +42,21 @@
       "DocumentGroups": [
         {
           "DockedHeight": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 9,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "LoginViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\AYA MAHMOUD\\source\\repos\\MedicalRep\\MedicalRep\\ViewModels\\LoginViewModel.cs",
+              "RelativeDocumentMoniker": "MedicalRep\\ViewModels\\LoginViewModel.cs",
+              "ToolTip": "C:\\Users\\AYA MAHMOUD\\source\\repos\\MedicalRep\\MedicalRep\\ViewModels\\LoginViewModel.cs",
+              "RelativeToolTip": "MedicalRep\\ViewModels\\LoginViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-26T11:50:22.249Z",
+              "IsPinned": true
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
@@ -66,20 +83,44 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ApplicationUser.cs",
-              "DocumentMoniker": "C:\\Users\\AYA MAHMOUD\\source\\repos\\MedicalRep\\MedicalRep\\Models\\ApplicationUser.cs",
-              "RelativeDocumentMoniker": "MedicalRep\\Models\\ApplicationUser.cs",
-              "ToolTip": "C:\\Users\\AYA MAHMOUD\\source\\repos\\MedicalRep\\MedicalRep\\Models\\ApplicationUser.cs*",
-              "RelativeToolTip": "MedicalRep\\Models\\ApplicationUser.cs*",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "ErrorViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\AYA MAHMOUD\\source\\repos\\MedicalRep\\MedicalRep\\Models\\ErrorViewModel.cs",
+              "RelativeDocumentMoniker": "MedicalRep\\Models\\ErrorViewModel.cs",
+              "ToolTip": "C:\\Users\\AYA MAHMOUD\\source\\repos\\MedicalRep\\MedicalRep\\Models\\ErrorViewModel.cs",
+              "RelativeToolTip": "MedicalRep\\Models\\ErrorViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-26T12:14:28.848Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-26T13:24:54.634Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "ApplicationUser.cs",
+              "DocumentMoniker": "C:\\Users\\AYA MAHMOUD\\source\\repos\\MedicalRep\\MedicalRep\\Models\\ApplicationUser.cs",
+              "RelativeDocumentMoniker": "MedicalRep\\Models\\ApplicationUser.cs",
+              "ToolTip": "C:\\Users\\AYA MAHMOUD\\source\\repos\\MedicalRep\\MedicalRep\\Models\\ApplicationUser.cs",
+              "RelativeToolTip": "MedicalRep\\Models\\ApplicationUser.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAAABcAAAA6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-26T12:14:28.848Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "RegisterViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\AYA MAHMOUD\\source\\repos\\MedicalRep\\MedicalRep\\ViewModels\\RegisterViewModel.cs",
+              "RelativeDocumentMoniker": "MedicalRep\\ViewModels\\RegisterViewModel.cs",
+              "ToolTip": "C:\\Users\\AYA MAHMOUD\\source\\repos\\MedicalRep\\MedicalRep\\ViewModels\\RegisterViewModel.cs",
+              "RelativeToolTip": "MedicalRep\\ViewModels\\RegisterViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-26T11:44:21.287Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "Register.cshtml",
               "DocumentMoniker": "C:\\Users\\AYA MAHMOUD\\source\\repos\\MedicalRep\\MedicalRep\\Views\\Account\\Register.cshtml",
               "RelativeDocumentMoniker": "MedicalRep\\Views\\Account\\Register.cshtml",
@@ -87,12 +128,11 @@
               "RelativeToolTip": "MedicalRep\\Views\\Account\\Register.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-26T12:00:04.914Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-26T12:00:04.914Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "Login.cshtml",
               "DocumentMoniker": "C:\\Users\\AYA MAHMOUD\\source\\repos\\MedicalRep\\MedicalRep\\Views\\Account\\Login.cshtml",
               "RelativeDocumentMoniker": "MedicalRep\\Views\\Account\\Login.cshtml",
@@ -104,19 +144,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "LoginViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\AYA MAHMOUD\\source\\repos\\MedicalRep\\MedicalRep\\ViewModels\\LoginViewModel.cs",
-              "RelativeDocumentMoniker": "MedicalRep\\ViewModels\\LoginViewModel.cs",
-              "ToolTip": "C:\\Users\\AYA MAHMOUD\\source\\repos\\MedicalRep\\MedicalRep\\ViewModels\\LoginViewModel.cs",
-              "RelativeToolTip": "MedicalRep\\ViewModels\\LoginViewModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-26T11:50:22.249Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\AYA MAHMOUD\\source\\repos\\MedicalRep\\MedicalRep\\Program.cs",
               "RelativeDocumentMoniker": "MedicalRep\\Program.cs",
@@ -128,19 +156,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "RegisterViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\AYA MAHMOUD\\source\\repos\\MedicalRep\\MedicalRep\\ViewModels\\RegisterViewModel.cs",
-              "RelativeDocumentMoniker": "MedicalRep\\ViewModels\\RegisterViewModel.cs",
-              "ToolTip": "C:\\Users\\AYA MAHMOUD\\source\\repos\\MedicalRep\\MedicalRep\\ViewModels\\RegisterViewModel.cs",
-              "RelativeToolTip": "MedicalRep\\ViewModels\\RegisterViewModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-26T11:44:21.287Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "AccountController.cs",
               "DocumentMoniker": "C:\\Users\\AYA MAHMOUD\\source\\repos\\MedicalRep\\MedicalRep\\Controllers\\AccountController.cs",
               "RelativeDocumentMoniker": "MedicalRep\\Controllers\\AccountController.cs",
