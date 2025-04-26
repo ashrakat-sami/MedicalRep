@@ -3,6 +3,18 @@
   "WorkspaceRootPath": "C:\\Users\\Ashrakat\\Desktop\\Projects\\MedicalRep\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{A7A57CA1-0503-4F34-B133-384EA12A1582}|MedicalRep\\MedicalRep.csproj|c:\\users\\ashrakat\\desktop\\projects\\medicalrep\\medicalrep\\models\\visit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A7A57CA1-0503-4F34-B133-384EA12A1582}|MedicalRep\\MedicalRep.csproj|solutionrelative:medicalrep\\models\\visit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A7A57CA1-0503-4F34-B133-384EA12A1582}|MedicalRep\\MedicalRep.csproj|c:\\users\\ashrakat\\desktop\\projects\\medicalrep\\medicalrep\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A7A57CA1-0503-4F34-B133-384EA12A1582}|MedicalRep\\MedicalRep.csproj|solutionrelative:medicalrep\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A7A57CA1-0503-4F34-B133-384EA12A1582}|MedicalRep\\MedicalRep.csproj|c:\\users\\ashrakat\\desktop\\projects\\medicalrep\\medicalrep\\models\\specialization.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A7A57CA1-0503-4F34-B133-384EA12A1582}|MedicalRep\\MedicalRep.csproj|solutionrelative:medicalrep\\models\\specialization.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A7A57CA1-0503-4F34-B133-384EA12A1582}|MedicalRep\\MedicalRep.csproj|c:\\users\\ashrakat\\desktop\\projects\\medicalrep\\medicalrep\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A7A57CA1-0503-4F34-B133-384EA12A1582}|MedicalRep\\MedicalRep.csproj|solutionrelative:medicalrep\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -34,7 +46,7 @@
       "DocumentGroups": [
         {
           "DockedHeight": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -42,7 +54,46 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Visit.cs",
+              "DocumentMoniker": "C:\\Users\\Ashrakat\\Desktop\\Projects\\MedicalRep\\MedicalRep\\Models\\Visit.cs",
+              "RelativeDocumentMoniker": "MedicalRep\\Models\\Visit.cs",
+              "ToolTip": "C:\\Users\\Ashrakat\\Desktop\\Projects\\MedicalRep\\MedicalRep\\Models\\Visit.cs",
+              "RelativeToolTip": "MedicalRep\\Models\\Visit.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-26T12:19:42.372Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "Product.cs",
+              "DocumentMoniker": "C:\\Users\\Ashrakat\\Desktop\\Projects\\MedicalRep\\MedicalRep\\Models\\Product.cs",
+              "RelativeDocumentMoniker": "MedicalRep\\Models\\Product.cs",
+              "ToolTip": "C:\\Users\\Ashrakat\\Desktop\\Projects\\MedicalRep\\MedicalRep\\Models\\Product.cs",
+              "RelativeToolTip": "MedicalRep\\Models\\Product.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-26T12:18:12.058Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Specialization.cs",
+              "DocumentMoniker": "C:\\Users\\Ashrakat\\Desktop\\Projects\\MedicalRep\\MedicalRep\\Models\\Specialization.cs",
+              "RelativeDocumentMoniker": "MedicalRep\\Models\\Specialization.cs",
+              "ToolTip": "C:\\Users\\Ashrakat\\Desktop\\Projects\\MedicalRep\\MedicalRep\\Models\\Specialization.cs",
+              "RelativeToolTip": "MedicalRep\\Models\\Specialization.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-26T12:15:39.938Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "Register.cshtml",
               "DocumentMoniker": "C:\\Users\\Ashrakat\\Desktop\\Projects\\MedicalRep\\MedicalRep\\Views\\Account\\Register.cshtml",
               "RelativeDocumentMoniker": "MedicalRep\\Views\\Account\\Register.cshtml",
@@ -50,12 +101,11 @@
               "RelativeToolTip": "MedicalRep\\Views\\Account\\Register.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-26T12:00:04.914Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-26T12:00:04.914Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "Login.cshtml",
               "DocumentMoniker": "C:\\Users\\Ashrakat\\Desktop\\Projects\\MedicalRep\\MedicalRep\\Views\\Account\\Login.cshtml",
               "RelativeDocumentMoniker": "MedicalRep\\Views\\Account\\Login.cshtml",
@@ -63,12 +113,11 @@
               "RelativeToolTip": "MedicalRep\\Views\\Account\\Login.cshtml",
               "ViewState": "AgIAAB4AAAAAAAAAAAAAACUAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-26T11:55:00.749Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-26T11:55:00.749Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 6,
               "Title": "LoginViewModel.cs",
               "DocumentMoniker": "C:\\Users\\Ashrakat\\Desktop\\Projects\\MedicalRep\\MedicalRep\\ViewModels\\LoginViewModel.cs",
               "RelativeDocumentMoniker": "MedicalRep\\ViewModels\\LoginViewModel.cs",
@@ -76,12 +125,11 @@
               "RelativeToolTip": "MedicalRep\\ViewModels\\LoginViewModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-26T11:50:22.249Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-26T11:50:22.249Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 7,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\Ashrakat\\Desktop\\Projects\\MedicalRep\\MedicalRep\\Program.cs",
               "RelativeDocumentMoniker": "MedicalRep\\Program.cs",
@@ -89,12 +137,11 @@
               "RelativeToolTip": "MedicalRep\\Program.cs",
               "ViewState": "AgIAABMAAAAAAAAAAAAQwBsAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-26T11:45:18.591Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-26T11:45:18.591Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 8,
               "Title": "RegisterViewModel.cs",
               "DocumentMoniker": "C:\\Users\\Ashrakat\\Desktop\\Projects\\MedicalRep\\MedicalRep\\ViewModels\\RegisterViewModel.cs",
               "RelativeDocumentMoniker": "MedicalRep\\ViewModels\\RegisterViewModel.cs",
@@ -102,12 +149,11 @@
               "RelativeToolTip": "MedicalRep\\ViewModels\\RegisterViewModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-26T11:44:21.287Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-26T11:44:21.287Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "AccountController.cs",
               "DocumentMoniker": "C:\\Users\\Ashrakat\\Desktop\\Projects\\MedicalRep\\MedicalRep\\Controllers\\AccountController.cs",
               "RelativeDocumentMoniker": "MedicalRep\\Controllers\\AccountController.cs",
