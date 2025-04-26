@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace MedicalRep.ViewModels
+﻿namespace MedicalRep.ViewModels
 {
     public class LoginViewModel
     {

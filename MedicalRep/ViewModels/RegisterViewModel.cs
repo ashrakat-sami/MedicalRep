@@ -1,5 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
+﻿
 namespace MedicalRep.ViewModels
 {
     public class RegisterViewModel
@@ -18,7 +17,15 @@ namespace MedicalRep.ViewModels
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        // Add Role (drop down list )
        
+        //[Display(Name = "Role")]
+        //public string? RoleName { get; set; }
+
+        //// For populating dropdown list
+        //public List<SelectListItem>? Roles { get; set; }
+
 
 
 

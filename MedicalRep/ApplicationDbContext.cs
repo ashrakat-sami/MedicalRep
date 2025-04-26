@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore;
+﻿
 
 namespace MedicalRep
 {
@@ -9,6 +8,11 @@ namespace MedicalRep
             : base(options)
         {
         }
+        public DbSet<Specialization> Specializations { get; set; }
+        public DbSet<Product> Products { get; set; }
+        public DbSet<Review> Reviews { get; set; }
+        public DbSet<Visit> Visits { get; set; }
+
     }
   
 }

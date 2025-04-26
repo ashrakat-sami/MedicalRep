@@ -4,3 +4,14 @@
 *.vsidx
 bin/
 obj/
+.vs/
+bin/
+obj/
+*.user
+*.suo
+*.db
+*.cache
+*.pdb
+*.exe
+*.dll
+
