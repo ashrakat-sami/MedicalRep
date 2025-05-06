@@ -17,7 +17,7 @@ namespace MedicalRep.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.15")
+                .HasAnnotation("ProductVersion", "9.0.4")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -28,12 +28,6 @@ namespace MedicalRep.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("AccessFailedCount")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("Admin")
-                        .HasColumnType("bit");
-
-                    b.Property<int?>("Age")
                         .HasColumnType("int");
 
                     b.Property<string>("City")
@@ -92,9 +86,6 @@ namespace MedicalRep.Migrations
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
 
-                    b.Property<decimal?>("Salary")
-                        .HasColumnType("decimal(18,2)");
-
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
 
@@ -112,12 +103,6 @@ namespace MedicalRep.Migrations
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
 
-                    b.Property<bool>("doctor")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("medicalRep")
-                        .HasColumnType("bit");
-
                     b.HasKey("Id");
 
                     b.HasIndex("NormalizedEmail")
@@ -133,22 +118,89 @@ namespace MedicalRep.Migrations
                     b.ToTable("Users", (string)null);
                 });
 
+            modelBuilder.Entity("MedicalRep.Models.Category", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Categories");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Pain Relievers"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Antibiotics"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Antacids"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "Bronchodilators"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Name = "Antihistamines"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Name = "Antispasmodics"
+                        });
+                });
+
             modelBuilder.Entity("MedicalRep.Models.Product", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("Description")
-                        .IsRequired()
+                    b.Property<int?>("CategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Contraindications")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DosageForm")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("ExpiryDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Image")
-                        .IsRequired()
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
 
+                    b.Property<string>("Indications")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Ingredients")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsPrescriptionOnly")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Manufacturer")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
@@ -156,15 +208,82 @@ namespace MedicalRep.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<decimal>("Price")
+                    b.Property<decimal?>("Price")
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<decimal>("Rate")
                         .HasColumnType("decimal(18, 2)");
 
+                    b.Property<string>("SideEffects")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Strength")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
+                    b.HasIndex("CategoryId");
+
                     b.ToTable("Products", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "1",
+                            CategoryId = 1,
+                            Contraindications = "Liver disease, alcohol consumption.",
+                            Description = "Used to relieve pain and reduce fever.",
+                            DosageForm = "Tablet",
+                            ExpiryDate = new DateTime(2025, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Image = "https://abclive1.s3.amazonaws.com/2c2edf5e-aa5c-4940-b5c6-6eb1ac32a016/productimage/5099627630375___XL.jpg",
+                            Indications = "Used for headaches, body aches, and fever.",
+                            Ingredients = "Paracetamol",
+                            IsPrescriptionOnly = false,
+                            Manufacturer = "Panadol Inc.",
+                            Name = "Panadol",
+                            Price = 6.00m,
+                            Rate = 4.5m,
+                            SideEffects = "Nausea, dizziness, stomach upset.",
+                            Strength = "500mg"
+                        },
+                        new
+                        {
+                            Id = "2",
+                            CategoryId = 2,
+                            Contraindications = "Allergy to penicillin.",
+                            Description = "Antibiotic used to treat bacterial infections.",
+                            DosageForm = "Capsule",
+                            ExpiryDate = new DateTime(2025, 6, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Image = "https://th.bing.com/th/id/OIP.mzw9ErLwuoZUehYkv18gbgHaFX?w=254&h=183&c=7&r=0&o=5&dpr=1.3&pid=1.7",
+                            Indications = "Used for respiratory and urinary tract infections.",
+                            Ingredients = "Amoxicillin",
+                            IsPrescriptionOnly = true,
+                            Manufacturer = "Amoxicillin Ltd.",
+                            Name = "Amoxicillin",
+                            Price = 12.00m,
+                            Rate = 5.0m,
+                            SideEffects = "Rash, diarrhea, nausea.",
+                            Strength = "250mg"
+                        },
+                        new
+                        {
+                            Id = "3",
+                            CategoryId = 3,
+                            Contraindications = "Kidney disease.",
+                            Description = "Antacid used to relieve heartburn and indigestion.",
+                            DosageForm = "Chewable Tablet",
+                            ExpiryDate = new DateTime(2024, 5, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Image = "https://th.bing.com/th/id/OIP.k7jkYQfLMGsV5yMr_mG6kwHaHa?w=188&h=188&c=7&r=0&o=5&dpr=1.3&pid=1.7",
+                            Indications = "Relieves heartburn, acid indigestion, and upset stomach.",
+                            Ingredients = "Calcium Carbonate",
+                            IsPrescriptionOnly = false,
+                            Manufacturer = "Tums Inc.",
+                            Name = "Tums",
+                            Price = 3.50m,
+                            Rate = 4.0m,
+                            SideEffects = "Constipation, nausea.",
+                            Strength = "500mg"
+                        });
                 });
 
             modelBuilder.Entity("MedicalRep.Models.Review", b =>
@@ -220,6 +339,68 @@ namespace MedicalRep.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Specializations", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Description = "Specialized in heart diseases and conditions.",
+                            Name = "Cardiology"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Description = "Specialized in brain and nervous system disorders.",
+                            Name = "Neurology"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Description = "Specialized in the care of infants, children, and adolescents.",
+                            Name = "Pediatrics"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Description = "Specialized in musculoskeletal conditions.",
+                            Name = "Orthopedics"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Description = "Specialized in skin, hair, and nail conditions.",
+                            Name = "Dermatology"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Description = "Specialized in mental health and emotional disorders.",
+                            Name = "Psychiatry"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Description = "Specialized in the digestive system and its disorders.",
+                            Name = "Gastroenterology"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Description = "Specialized in female reproductive health.",
+                            Name = "Gynecology"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Description = "Specialized in eye conditions and surgery.",
+                            Name = "Ophthalmology"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Description = "Specialized in urinary tract and male reproductive organs.",
+                            Name = "Urology"
+                        });
                 });
 
             modelBuilder.Entity("MedicalRep.Models.Visit", b =>
@@ -282,7 +463,7 @@ namespace MedicalRep.Migrations
                         .HasDatabaseName("RoleNameIndex")
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
-                    b.ToTable("AspNetRoles", (string)null);
+                    b.ToTable("Roles", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -307,7 +488,7 @@ namespace MedicalRep.Migrations
 
                     b.HasIndex("RoleId");
 
-                    b.ToTable("AspNetRoleClaims", (string)null);
+                    b.ToTable("RoleClaims", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
@@ -332,7 +513,7 @@ namespace MedicalRep.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("AspNetUserClaims", (string)null);
+                    b.ToTable("UserClaims", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
@@ -354,7 +535,7 @@ namespace MedicalRep.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("AspNetUserLogins", (string)null);
+                    b.ToTable("UserLogins", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
@@ -369,7 +550,7 @@ namespace MedicalRep.Migrations
 
                     b.HasIndex("RoleId");
 
-                    b.ToTable("AspNetUserRoles", (string)null);
+                    b.ToTable("UserRoles", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
@@ -388,7 +569,7 @@ namespace MedicalRep.Migrations
 
                     b.HasKey("UserId", "LoginProvider", "Name");
 
-                    b.ToTable("AspNetUserTokens", (string)null);
+                    b.ToTable("UserTokens", (string)null);
                 });
 
             modelBuilder.Entity("MedicalRep.Models.ApplicationUser", b =>
@@ -399,6 +580,16 @@ namespace MedicalRep.Migrations
                         .OnDelete(DeleteBehavior.SetNull);
 
                     b.Navigation("Specialization");
+                });
+
+            modelBuilder.Entity("MedicalRep.Models.Product", b =>
+                {
+                    b.HasOne("MedicalRep.Models.Category", "Category")
+                        .WithMany("Products")
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.Navigation("Category");
                 });
 
             modelBuilder.Entity("MedicalRep.Models.Review", b =>
@@ -491,6 +682,11 @@ namespace MedicalRep.Migrations
                     b.Navigation("Reviews");
 
                     b.Navigation("Visits");
+                });
+
+            modelBuilder.Entity("MedicalRep.Models.Category", b =>
+                {
+                    b.Navigation("Products");
                 });
 
             modelBuilder.Entity("MedicalRep.Models.Product", b =>

@@ -1,0 +1,79 @@
+﻿@model IEnumerable<MedicalRep.Models.Product>
+@{
+    ViewData["Title"] = "Products";
+}
+
+<div class="container">
+    <h1 class="my-4">Our Products</h1>
+
+    
+        <div class="mb-4">
+            <a asp-action="Create" asp-controller="Product" class="btn btn-success">
+                <i class="fas fa-plus"></i> Add New Product
+            </a>
+        </div>
+    
+
+    <div class="row">
+        @foreach (var product in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 product-card">
+                    <img src="@product.Image" alt="@product.Name" class="card-img-top product-image">
+                    <div class="card-body">
+                        <h5 class="card-title">@product.Name</h5>
+                        <h6 class="text-primary">@product.Price</h6>
+                        <div class="rating mb-2">
+                            @for (int i = 1; i <= 5; i++)
+                            {
+                                <span class="fa @(i <= product.Rate ? "fa-star checked" : "fa-star")"></span>
+                            }
+                        </div>
+                        <p class="card-text text-muted">@product.Manufacturer</p>
+                        <p class="card-text">@product.Description</p>
+                    </div>
+                    <div class="card-footer bg-transparent">
+                        <a asp-action="Details" asp-controller="Product" asp-route-id="@product.Id"
+                           class="btn btn-info btn-sm">
+                            <i class="fas fa-eye"></i> Details
+                        </a>
+
+                          <a asp-action="Edit" asp-controller="Product" asp-route-id="@product.Id"
+                               class="btn btn-primary btn-sm">
+                                <i class="fas fa-edit"></i> Edit
+                            </a>
+                            <a asp-action="Delete" asp-controller="Product" asp-route-id="@product.Id"
+                               class="btn btn-danger btn-sm">
+                                <i class="fas fa-trash"></i> Delete
+                            </a>
+                        
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<style>
+    .product-card {
+        transition: transform 0.3s;
+    }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+    .product-image {
+        height: 200px;
+        object-fit: cover;
+    }
+
+    .rating {
+        color: #ffc107;
+    }
+
+    .checked {
+        color: orange;
+    }
+</style>

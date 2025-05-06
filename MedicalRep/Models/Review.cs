@@ -1,8 +1,11 @@
-﻿namespace MedicalRep.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace MedicalRep.Models
 {
     public class Review
     {
-
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public string DoctorId { get; set; }  // Foreign Key to Doctor
         public string ProductId { get; set; } // Foreign Key to Product

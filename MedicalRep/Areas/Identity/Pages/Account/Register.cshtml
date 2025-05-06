@@ -1,0 +1,103 @@
+﻿@model RegisterViewModel
+
+<h2>Register</h2>
+<hr />
+
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Register" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="ConfirmPassword" class="control-label"></label>
+                <input asp-for="ConfirmPassword" class="form-control" />
+                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="FName" class="control-label">First Name</label>
+                <input asp-for="FName" class="form-control" />
+                <span asp-validation-for="FName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="LName" class="control-label">Last Name</label>
+                <input asp-for="LName" class="form-control" />
+                <span asp-validation-for="LName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="City" class="control-label"></label>
+                <input asp-for="City" class="form-control" />
+                <span asp-validation-for="City" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Street" class="control-label"></label>
+                <input asp-for="Street" class="form-control" />
+                <span asp-validation-for="Street" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Government" class="control-label"></label>
+                <input asp-for="Government" class="form-control" />
+                <span asp-validation-for="Government" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Location" class="control-label"></label>
+                <input asp-for="Location" class="form-control" />
+                <span asp-validation-for="Location" class="text-danger"></span>
+            </div>
+
+            <div class="form-group" id="specializationGroup" style="display:none;">
+                <label asp-for="SpecializationId" class="control-label">Specialization</label>
+                <select asp-for="SpecializationId" class="form-control"
+                        asp-items="ViewBag.Specializations">
+                    <option value="">-- Select Specialization --</option>
+                </select>
+                <span asp-validation-for="SpecializationId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="SelectedRole" class="control-label">User Role</label>
+                <select asp-for="SelectedRole" asp-items="Model.RoleOptions" class="form-control" id="roleSelect">
+                    <option value="">-- Select Role --</option>
+                </select>
+                <span asp-validation-for="SelectedRole" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Register</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        document.getElementById('roleSelect').addEventListener('change', function() {
+            var specializationGroup = document.getElementById('specializationGroup');
+            if (this.value === 'Doctor') {
+                specializationGroup.style.display = 'block';
+            } else {
+                specializationGroup.style.display = 'none';
+            }
+        });
+    </script>
+}

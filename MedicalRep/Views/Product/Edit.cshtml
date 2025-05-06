@@ -1,0 +1,124 @@
+﻿@model MedicalRep.Models.Product
+@{
+    ViewData["Title"] = "Edit Product";
+}
+
+<h2>Edit Product</h2>
+
+<form asp-action="Edit" enctype="multipart/form-data" method="post">
+    <input type="hidden" asp-for="Id" />
+
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Rate"></label>
+        <input asp-for="Rate" class="form-control" />
+        <span asp-validation-for="Rate" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Price"></label>
+        <input asp-for="Price" class="form-control" />
+        <span asp-validation-for="Price" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="CategoryId"></label>
+        <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.CategoryId">
+            <option value="">-- Select Category --</option>
+        </select>
+        <span asp-validation-for="CategoryId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="DosageForm"></label>
+        <input asp-for="DosageForm" class="form-control" />
+        <span asp-validation-for="DosageForm" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Strength"></label>
+        <input asp-for="Strength" class="form-control" />
+        <span asp-validation-for="Strength" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="ExpiryDate"></label>
+        <input asp-for="ExpiryDate" type="date" class="form-control" />
+        <span asp-validation-for="ExpiryDate" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Indications"></label>
+        <textarea asp-for="Indications" class="form-control"></textarea>
+        <span asp-validation-for="Indications" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="SideEffects"></label>
+        <textarea asp-for="SideEffects" class="form-control"></textarea>
+        <span asp-validation-for="SideEffects" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Contraindications"></label>
+        <textarea asp-for="Contraindications" class="form-control"></textarea>
+        <span asp-validation-for="Contraindications" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Ingredients"></label>
+        <textarea asp-for="Ingredients" class="form-control"></textarea>
+        <span asp-validation-for="Ingredients" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Manufacturer"></label>
+        <input asp-for="Manufacturer" class="form-control" />
+        <span asp-validation-for="Manufacturer" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Description"></label>
+        <textarea asp-for="Description" class="form-control"></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+
+    <div class="form-group form-check">
+        <input asp-for="IsPrescriptionOnly" class="form-check-input" />
+        <label asp-for="IsPrescriptionOnly" class="form-check-label"></label>
+    </div>
+
+    @* Existing image preview and removal *@
+    @if (!string.IsNullOrEmpty(Model.Image))
+    {
+        <div class="form-group">
+            <label>Current Image</label><br />
+            <img src="@Model.Image" alt="Product Image" style="max-height: 150px;" class="mb-2" />
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="removeImage" value="true" />
+                <label class="form-check-label">Remove Image</label>
+            </div>
+        </div>
+    }
+
+    <div class="form-group">
+        <label>Upload New Image</label>
+        <input type="file" name="Image" class="form-control-file" />
+    </div>
+
+    <button type="submit" class="btn btn-success">Save Changes</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

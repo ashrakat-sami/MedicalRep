@@ -3,11 +3,13 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"]</title>
+    <meta name="description" content="PharmaRep - Your pharmaceutical representative platform">
+    <title>@ViewData["Title"] - PharmaRep</title>
     <link rel="icon" type="image/x-icon" href="~/images/icon.png" />
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/MedicalRep.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 <body>
@@ -25,72 +27,74 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Product" asp-action="Privacy">Products</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Product" asp-action="Index">Products</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Doctors</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Doctor" asp-action="Index">Doctors</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">ToDo</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Login">Login</a>
                         </li>
-                       
                     </ul>
                     <form class="d-flex mx-5">
                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success " type="submit"><i class="bi bi-search"></i></button>
+                        <button class="btn btn-outline-success" type="submit" aria-label="Search button"><i class="bi bi-search"></i></button>
                     </form>
                 </div>
             </div>
         </nav>
     </header>
+
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
-    <footer class="border-top footer text-muted custom-footer">
+
+    <footer class="border-top footer text-muted custom-footer py-4">
         <div class="container">
             <div class="row">
                 <div class="col-md-3">
                     <h3>PharmaRep</h3>
+                    <p>Your trusted pharmaceutical platform</p>
                 </div>
                 <div class="col-md-3">
                     <h5>Important Links</h5>
-                    <ul class="list-unstyled ">
-                        <li><a href="#">Products</a></li>
-                        <li><a href="#">Doctors</a></li>
-                       
+                    <ul class="list-unstyled">
+                        <li><a asp-controller="Product" asp-action="Index">Products</a></li>
+                        <li><a asp-controller="Doctor" asp-action="Index">Doctors</a></li>
                     </ul>
                 </div>
                 <div class="col-md-3 contact">
                     <h5>Contact Us</h5>
-                    <p>Call: (237) 681-812-255</p>
-                    <p>Email: fildineesoe@gmail.com</p>
-                    <p>Address: 0123 Some place, Some country</p>
+                    <p><i class="bi bi-telephone"></i> (237) 681-812-255</p>
+                    <p><i class="bi bi-envelope"></i> fildineesoe@gmail.com</p>
+                    <p><i class="bi bi-geo-alt"></i> 0123 Some place, Some country</p>
                 </div>
                 <div class="col-md-3">
                     <h5>Newsletter</h5>
                     <div class="input-group">
-                        <input type="email" class="form-control" placeholder="Enter your email address">
-                        <button class="btn btn-outline-light" type="button"><i class="bi bi-send"></i></button>
+                        <input type="email" class="form-control" placeholder="Enter your email" aria-label="Email for newsletter">
+                        <button class="btn btn-primary" type="button" aria-label="Subscribe"><i class="bi bi-send"></i></button>
                     </div>
                 </div>
             </div>
             <hr class="footer-divider">
             <div class="row">
                 <div class="col-md-6 text-start">
-                    &copy; 2025 All Rights Reserved 
+                    &copy; 2025 PharmaRep - All Rights Reserved
                 </div>
                 <div class="col-md-6 text-end">
-                    <a href="#" class="social-icon"><i class="bi bi-linkedin"></i></a>
-                    <a href="#" class="social-icon"><i class="bi bi-facebook"></i></a>
-                    <a href="#" class="social-icon"><i class="bi bi-instagram"></i></a>
+                    <a href="#" class="social-icon" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                    <a href="#" class="social-icon" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                    <a href="#" class="social-icon" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
                 </div>
             </div>
         </div>
     </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>

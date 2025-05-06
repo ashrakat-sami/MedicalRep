@@ -1,57 +1,120 @@
-﻿@model MedicalRep.ViewModels.RegisterViewModel
-
+﻿@model RegisterViewModel
 @{
     ViewData["Title"] = "Register";
 }
 
 <h1>Register</h1>
 
-
-<hr />
 <div class="row">
-    <div class="col-md-4">
-        <form asp-action="Register">
-            @*  <div asp-validation-summary="All" class="text-danger"></div> *@
-            <div class="form-group">
-                <label asp-for="UserName" class="control-label"></label>
-                <input asp-for="UserName" class="form-control" />
-                <span asp-validation-for="UserName" class="text-danger"></span>
-            </div>
+    <div class="col-md-6">
+        <form asp-action="Register" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <!-- Email -->
             <div class="form-group">
                 <label asp-for="Email" class="control-label"></label>
                 <input asp-for="Email" class="form-control" />
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
+
+            <!-- Password -->
             <div class="form-group">
                 <label asp-for="Password" class="control-label"></label>
-                <input asp-for="Password" class="form-control" />
+                <input asp-for="Password" class="form-control" type="password" />
                 <span asp-validation-for="Password" class="text-danger"></span>
             </div>
+
+            <!-- Confirm Password -->
             <div class="form-group">
                 <label asp-for="ConfirmPassword" class="control-label"></label>
-                <input asp-for="ConfirmPassword" class="form-control" />
+                <input asp-for="ConfirmPassword" class="form-control" type="password" />
                 <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
             </div>
-           @*  <div class="form-group">
-                <label asp-for="RoleName" class="control-label"></label>
-                <select asp-for="RoleName" asp-items="Model.Roles" class="form-control"></select>
-                <span asp-validation-for="RoleName" class="text-danger"></span>
-            </div> *@
-          
+
+            <!-- Name Fields -->
             <div class="form-group">
-                <input type="submit" value="Register" class="btn btn-primary" />
+                <label asp-for="FName" class="control-label">First Name</label>
+                <input asp-for="FName" class="form-control" />
+                <span asp-validation-for="FName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="LName" class="control-label">Last Name</label>
+                <input asp-for="LName" class="form-control" />
+                <span asp-validation-for="LName" class="text-danger"></span>
+            </div>
+
+            <!-- Address Fields -->
+            <div class="form-group">
+                <label asp-for="City" class="control-label"></label>
+                <input asp-for="City" class="form-control" />
+                <span asp-validation-for="City" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Street" class="control-label"></label>
+                <input asp-for="Street" class="form-control" />
+                <span asp-validation-for="Street" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Government" class="control-label"></label>
+                <input asp-for="Government" class="form-control" />
+                <span asp-validation-for="Government" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Location" class="control-label"></label>
+                <input asp-for="Location" class="form-control" />
+                <span asp-validation-for="Location" class="text-danger"></span>
+            </div>
+
+            <!-- Specialization (hidden by default) -->
+            <div class="form-group" id="specializationGroup" style="display:none;">
+                <label asp-for="SpecializationId" class="control-label">Specialization</label>
+                <select asp-for="SpecializationId" class="form-control" asp-items="ViewBag.Specializations">
+                    <option value="">-- Select Specialization --</option>
+                </select>
+                <span asp-validation-for="SpecializationId" class="text-danger"></span>
+            </div>
+
+            <!-- Role Selection -->
+            <div class="form-group">
+                <label asp-for="SelectedRole" class="control-label">User Role</label>
+                <select asp-for="SelectedRole" asp-items="Model.RoleOptions" class="form-control" id="roleSelect">
+                    <option value="">-- Select Role --</option>
+                </select>
+                <span asp-validation-for="SelectedRole" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Register</button>
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Login" asp-controller="Account">Already have an account?</a>
-</div>
-
-
 @section Scripts {
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
+    <script>
+        document.getElementById('roleSelect').addEventListener('change', function() {
+            var specializationGroup = document.getElementById('specializationGroup');
+            specializationGroup.style.display = this.value === 'Doctor' ? 'block' : 'none';
+
+            // Optional: Clear selection when hiding
+            if (this.value !== 'Doctor') {
+                document.getElementById('SpecializationId').value = '';
+            }
+        });
+
+        // Initialize visibility on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            var roleSelect = document.getElementById('roleSelect');
+            if (roleSelect.value === 'Doctor') {
+                document.getElementById('specializationGroup').style.display = 'block';
+            }
+        });
+    </script>
 }

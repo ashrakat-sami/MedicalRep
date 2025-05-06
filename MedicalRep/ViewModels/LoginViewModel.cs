@@ -1,16 +1,12 @@
-﻿namespace MedicalRep.ViewModels
+﻿public class LoginViewModel
 {
-    public class LoginViewModel
-    {
-        [Required]
+    [Required]
+    [EmailAddress]
+    public string Email { get; set; }
 
-        public string UserName { get; set; }
+    [Required]
+    [DataType(DataType.Password)]
+    public string Password { get; set; }
 
-        [Required]
-        [DataType(DataType.Password)]
-        public string Password { get; set; }
-
-        public bool RememberMe { get; set; }
-
-    }
+    public bool RememberMe { get; set; }
 }

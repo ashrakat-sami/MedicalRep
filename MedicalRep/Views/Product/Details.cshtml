@@ -1,0 +1,71 @@
+﻿@model MedicalRep.Models.Product
+
+@{
+    ViewData["Title"] = "Product Details";
+}
+
+<div class="container">
+    <h2 class="my-4">@Model.Name</h2>
+    <div class="row">
+        <div class="col-md-5">
+            <img src="@Model.Image" alt="@Model.Name" class="img-fluid rounded shadow" />
+        </div>
+        <div class="col-md-7">
+            <dl class="row">
+                <dt class="col-sm-4">Description:</dt>
+                <dd class="col-sm-8">@Model.Description</dd>
+
+                <dt class="col-sm-4">Manufacturer:</dt>
+                <dd class="col-sm-8">@Model.Manufacturer</dd>
+
+                <dt class="col-sm-4">Price:</dt>
+                <dd class="col-sm-8">@Model.Price</dd>
+
+                <dt class="col-sm-4">Rate:</dt>
+                <dd class="col-sm-8">
+                    @for (int i = 1; i <= 5; i++)
+                    {
+                        <span class="fa @(i <= Model.Rate ? "fa-star checked" : "fa-star")"></span>
+                    }
+                </dd>
+
+                <dt class="col-sm-4">Dosage Form:</dt>
+                <dd class="col-sm-8">@Model.DosageForm</dd>
+
+                <dt class="col-sm-4">Strength:</dt>
+                <dd class="col-sm-8">@Model.Strength</dd>
+
+                <dt class="col-sm-4">Expiry Date:</dt>
+                <dd class="col-sm-8">@Model.ExpiryDate.ToString()</dd>
+
+                <dt class="col-sm-4">Indications:</dt>
+                <dd class="col-sm-8">@Model.Indications</dd>
+
+                <dt class="col-sm-4">Side Effects:</dt>
+                <dd class="col-sm-8">@Model.SideEffects</dd>
+
+                <dt class="col-sm-4">Contraindications:</dt>
+                <dd class="col-sm-8">@Model.Contraindications</dd>
+
+                <dt class="col-sm-4">Ingredients:</dt>
+                <dd class="col-sm-8">@Model.Ingredients</dd>
+
+                <dt class="col-sm-4">Prescription Only:</dt>
+                <dd class="col-sm-8">@Model.IsPrescriptionOnly</dd>
+
+                <dt class="col-sm-4">Category:</dt>
+                <dd class="col-sm-8">@Model.Category?.Name</dd>
+            </dl>
+
+            <a asp-action="Index" class="btn btn-secondary">
+                <i class="fas fa-arrow-left"></i> Back to List
+            </a>
+        </div>
+    </div>
+</div>
+
+<style>
+    .checked {
+        color: orange;
+    }
+</style>

@@ -1,109 +1,222 @@
-﻿namespace MedicalRep.Controllers
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using MedicalRep.Models;
+using MedicalRep.ViewModels;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Threading.Tasks;
+using System.Collections.Generic;
+using System.Linq;
+using System;
+
+namespace MedicalRep.Controllers
 {
     public class AccountController : Controller
     {
-        private readonly UserManager<ApplicationUser> userManager;
-        private readonly SignInManager<ApplicationUser> signInManager;
+        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly ApplicationDbContext _db;
+        private readonly ILogger<AccountController> _logger;
 
-        public AccountController(UserManager<ApplicationUser> userManager,SignInManager<ApplicationUser> signInManager)
+        public AccountController(
+            ILogger<AccountController> logger,
+            ApplicationDbContext db,
+            UserManager<ApplicationUser> userManager,
+            SignInManager<ApplicationUser> signInManager,
+            RoleManager<IdentityRole> roleManager)
         {
-            this.userManager = userManager;
-            this.signInManager = signInManager;
+            _logger = logger;
+            _userManager = userManager;
+            _signInManager = signInManager;
+            _roleManager = roleManager;
+            _db = db;
         }
+
         [HttpGet]
-        public async Task<IActionResult> Register()
+        public IActionResult Register()
         {
-            //var roles = await userManager.GetRolesAsync(new ApplicationUser()); 
-                                                                               
-            //var rolesList = new List<SelectListItem>
-            //{
-            //    new SelectListItem { Value = "MedicalRep", Text = "MedicalRep" },
-            //    new SelectListItem { Value = "Doctor", Text = "Doctor" }
-            //};
-            //var model = new RegisterViewModel
-            //{
-            //    Roles = rolesList
-            //};
-            return View(/*model*/);
+            var model = new RegisterViewModel
+            {
+                RoleOptions = GetRoles()
+            };
+
+            ViewBag.Specializations = new SelectList(_db.Specializations.ToList(), "Id", "Name");
+            return View(model);
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Register(RegisterViewModel newUser)
+        public async Task<IActionResult> Register(RegisterViewModel model)
         {
-            if (ModelState.IsValid)
+            // Always repopulate these before returning the view
+            model.RoleOptions = GetRoles();
+            ViewBag.Specializations = new SelectList(_db.Specializations.ToList(), "Id", "Name");
+
+            if (!ModelState.IsValid)
             {
-                var user = new ApplicationUser();
-                user.UserName = newUser.UserName;
-                user.Email = newUser.Email;
-                user.PasswordHash = newUser.Password;
-
-
-
-
-                IdentityResult result =await userManager.CreateAsync(user, newUser.Password);
-                if (result.Succeeded)
-                {
-                  await  signInManager.SignInAsync(user, isPersistent: false);
-                    return RedirectToAction("Index", "Home");
-                }
-                foreach (var error in result.Errors)
-                {
-                    ModelState.AddModelError("", error.Description);
-                }
-
+                _logger.LogWarning("Invalid model state during registration for {Email}", model.Email);
+                return View(model);
             }
-            // لو حصل Error ورجعت لنفس الصفحة محتاج تبعت الرولز تاني
-            //newUser.Roles = new List<SelectListItem>
-            //{
-            //    new SelectListItem { Value = "Admin", Text = "Admin" },
-            //    new SelectListItem { Value = "User", Text = "User" }
-            //};
-            return View(newUser);
+
+            var user = new ApplicationUser
+            {
+                UserName = model.Email,
+                Email = model.Email,
+                FName = model.FName,
+                LName = model.LName,
+                City = model.City,
+                Street = model.Street,
+                Government = model.Government,
+                IsDeleted = model.IsDeleted,
+                Location = model.Location,
+                SpecializationId = model.SelectedRole == "Doctor" ? model.SpecializationId : null
+            };
+
+            var result = await _userManager.CreateAsync(user, model.Password);
+
+            if (result.Succeeded)
+            {
+                _logger.LogInformation("User registered successfully: {Email}", model.Email);
+
+                if (!await _roleManager.RoleExistsAsync(model.SelectedRole))
+                {
+                    await _roleManager.CreateAsync(new IdentityRole(model.SelectedRole));
+                }
+
+                await _userManager.AddToRoleAsync(user, model.SelectedRole);
+                await _signInManager.SignInAsync(user, isPersistent: false);
+
+                return model.SelectedRole switch
+                {
+                    "Doctor" => RedirectToAction("Index", "Home"),
+                    "MedicalRep" => RedirectToAction("Index", "Home"),
+                    _ => RedirectToAction("Index", "Home")
+                };
+            }
+
+            foreach (var error in result.Errors)
+            {
+                ModelState.AddModelError(string.Empty, error.Description);
+            }
+
+            return View(model);
         }
-        [HttpGet]
-        public IActionResult Login()
+
+        private List<SelectListItem> GetRoles()
         {
+            return new List<SelectListItem>
+    {
+        new SelectListItem { Value = "Doctor", Text = "Doctor" },
+        new SelectListItem { Value = "MedicalRep", Text = "Medical Representative" }
+    };
+        }
+
+
+        [HttpGet]
+        public IActionResult Login(string returnUrl = null)
+        {
+            ViewData["ReturnUrl"] = returnUrl;
             return View();
         }
+
         [HttpPost]
-        //[ValidateAntiForgeryToken]
-        public async Task<IActionResult> Login(LoginViewModel loginVM)
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Login(LoginViewModel model, string returnUrl = null)
         {
-            if (ModelState.IsValid)
+            ViewData["ReturnUrl"] = returnUrl;
+
+            if (!ModelState.IsValid)
             {
-                ApplicationUser applicationUser = await userManager.FindByNameAsync(loginVM.UserName);
-                if (applicationUser != null)
+                foreach (var error in ModelState)
                 {
-                    bool found = await userManager.CheckPasswordAsync(applicationUser, loginVM.Password);
-
-                    if (found)
+                    foreach (var subError in error.Value.Errors)
                     {
-                        List<Claim> claims = new List<Claim>();
-                        // claims.Add(new Claim("Address", applicationUser.Address));
-                        await signInManager.SignInWithClaimsAsync(applicationUser, loginVM.RememberMe, claims);
-                        return RedirectToAction("Index", "Home");
-
+                        _logger.LogError("ModelState error in {Field}: {Error}", error.Key, subError.ErrorMessage);
                     }
                 }
 
-                ModelState.AddModelError("", "User name and password or invalid");
-
+                _logger.LogWarning("Invalid model state during login for {Email}", model.Email);
+                return View(model);
             }
 
-            return View(loginVM);
+
+            _logger.LogInformation("Login attempt for {Email}", model.Email);
+
+            var user = await _userManager.FindByEmailAsync(model.Email);
+
+            if (user != null)
+            {
+                if (user.IsDeleted)
+                {
+                    _logger.LogWarning("Login blocked for deactivated user {Email}", model.Email);
+                }
+                else
+                {
+                    var result = await _signInManager.PasswordSignInAsync(
+                        user.UserName,
+                        model.Password,
+                        model.RememberMe,
+                        lockoutOnFailure: false);
+
+                    if (result.Succeeded)
+                    {
+                        _logger.LogInformation("Login succeeded for {Email}", model.Email);
+
+                        var roles = await _userManager.GetRolesAsync(user);
+                        if (roles.Contains("Admin") || roles.Contains("Doctor") || roles.Contains("MedicalRep"))
+                        {
+                            return RedirectToAction("Index", "Product");
+                        }
+
+                        return RedirectToLocal(returnUrl);
+                    }
+                    else
+                    {
+                        _logger.LogWarning("Invalid password for user {Email}", model.Email);
+                    }
+                }
+            }
+            else
+            {
+                _logger.LogWarning("Login failed: user not found - {Email}", model.Email);
+            }
+
+            ModelState.AddModelError(string.Empty, "Invalid login attempt or account is deactivated");
+            return View(model);
         }
 
-      
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Logout()
         {
-            await signInManager.SignOutAsync();
-            return RedirectToAction("Login", "Account");
+            await _signInManager.SignOutAsync();
+            _logger.LogInformation("User logged out");
+            return RedirectToAction("Index", "Home");
         }
-       
 
-        public IActionResult Index()
+        [Authorize(Roles = "Admin")]
+        public IActionResult ManageUsers()
         {
-            return View();
+            var users = _userManager.Users.ToList();
+            return View(users);
+        }
+
+        private void AddErrors(IdentityResult result)
+        {
+            foreach (var error in result.Errors)
+            {
+                ModelState.AddModelError(string.Empty, error.Description);
+            }
+        }
+
+        private IActionResult RedirectToLocal(string returnUrl)
+        {
+            if (Url.IsLocalUrl(returnUrl))
+            {
+                return Redirect(returnUrl);
+            }
+            return RedirectToAction("Index", "Home");
         }
     }
 }
