@@ -1,0 +1,419 @@
+﻿@model MedicalRep.ViewModels.MedicalRepDashboardViewModel
+@{
+    ViewData["Title"] = "Medical Representative Dashboard";
+    Layout = "_Layout";
+}
+
+<style>
+    .medicalrep-dashboard {
+        display: grid;
+        grid-template-columns: 300px 1fr;
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .medicalrep-profile-card {
+        background: white;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+
+    .profile-details p {
+        margin-bottom: 10px;
+    }
+
+    .quick-links .btn {
+        text-align: left;
+    }
+
+    .stat-card {
+        transition: transform 0.3s;
+    }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+    .badge-status {
+        padding: 5px 10px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+    }
+
+    @@media (max-width: 768px) {
+        .medicalrep-dashboard {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+
+<div class="medicalrep-dashboard">
+    <!-- MR profile -->
+    <div class="medicalrep-profile-card card shadow">
+        <div class="card-body text-center">
+            <img class="img-fluid rounded-circle mb-3" src="~/images/Mr.jpg" alt="medicalrep avatar" style="width: 150px; height: 150px;" />
+            <h2 class="card-title">MR. @Model.MedicalRep.FName @Model.MedicalRep.LName</h2>
+
+            <div class="profile-details mt-4 text-start">
+                <p><i class="fas fa-map-marker-alt me-2"></i> @Model.MedicalRep.City, @Model.MedicalRep.Government</p>
+                <p><i class="fa-solid fa-house-medical-circle-check me-2"></i> @Model.MedicalRep.Location</p>
+                <p><i class="fas fa-envelope me-2"></i> @Model.MedicalRep.Email</p>
+                <p><i class="fas fa-phone me-2"></i> @Model.MedicalRep.PhoneNumber</p>
+            </div>
+
+            <div class="quick-links mt-4">
+                <a asp-action="Index" asp-controller="Product" class="btn btn-primary w-100 mb-2">
+                    <i class="fas fa-pills me-2"></i> Products
+                </a>
+                <a asp-action="index" asp-controller="Visit" class="btn btn-secondary w-100 mb-2">
+                    <i class="fas fa-calendar-alt me-2"></i> Visits History
+                </a>
+                <a asp-action="Create" asp-controller="Visit" class="btn btn-info w-100 mb-2">
+                    <i class="fas fa-calendar-plus me-2"></i> Plan New Visit
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- main content -->
+    <main class="container mt-4">
+        <!-- Search -->
+        <div class="card shadow mb-4">
+            <div class="card-header bg-secondary text-white">
+                <div class="input-group">
+                    <input type="text" id="searchInput" class="form-control" placeholder="Search doctors or products...">
+                    <button class="btn btn-light" type="button" id="searchButton">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="card-body" id="searchResults"></div>
+        </div>
+
+        <!-- visits statistics -->
+        <div class="row mb-4">
+            <div class="col-md-4">
+                <div class="card bg-primary text-white stat-card">
+                    <div class="card-body">
+                        <h5 class="card-title">Total Visits</h5>
+                        <p class="display-4">@Model.VisitStats.TotalVisits</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card bg-success text-white stat-card">
+                    <div class="card-body">
+                        <h5 class="card-title">Current Month Visits</h5>
+                        <p class="display-4">@Model.VisitStats.ThisMonthVisits</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card bg-info text-white stat-card">
+                    <div class="card-body">
+                        <h5 class="card-title">Upcoming Visits</h5>
+                        <p class="display-4">@Model.VisitStats.PlannedVisits</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mt-3">
+                <div class="card bg-warning text-white stat-card">
+                    <div class="card-body">
+                        <h5 class="card-title">Total Doctors</h5>
+                        <p class="display-4">@Model.TotalAllDoctors</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mt-3">
+                <div class="card bg-danger text-white stat-card">
+                    <div class="card-body">
+                        <h5 class="card-title">Total Specializations</h5>
+                        <p class="display-4">@Model.TotalSpecializations</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mt-3">
+                <div class="card bg-dark text-white stat-card">
+                    <div class="card-body">
+                        <h5 class="card-title">Total Products</h5>
+                        <p class="display-4">@Model.TotalProducts</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Doctors by Specialization Chart -->
+        <div class="card shadow mb-4">
+            <div class="card-header bg-secondary text-white">
+                <h5 class="mb-0">Doctors by Specialization</h5>
+            </div>
+            <div class="card-body">
+                <canvas id="specializationChart" height="200"></canvas>
+            </div>
+        </div>
+
+        <!-- Upcoming Visits Calendar -->
+        <div class="card shadow mb-4">
+            <div class="card-header bg-secondary text-white">
+                <h5 class="mb-0">Upcoming Visits Calendar</h5>
+            </div>
+            <div class="card-body">
+                <div id="calendar"></div>
+            </div>
+        </div>
+
+        <!-- Latest visits -->
+        <div class="card shadow mb-4">
+            <div class="card-header bg-secondary text-white d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">Recent Visits</h5>
+                <a asp-action="Index" asp-controller="Visit" class="btn btn-sm btn-light">View All</a>
+            </div>
+            <div class="card-body">
+                @if (Model.RecentVisits.Any())
+                {
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Doctor</th>
+                                    <th>Status</th>
+                                    <th>Clinic Location</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var visit in Model.RecentVisits)
+                                {
+                                    <tr>
+                                        <td>@visit.VisitDate.ToString("yyyy/MM/dd")</td>
+                                        <td>Dr. @visit.Doctor?.LName @visit.Doctor?.FName</td>
+                                        <td><span class="badge @GetStatusBadgeClass(visit.Status)">@visit.Status</span></td>
+                                        <td>@visit.Doctor?.Location</td>
+                                        <td>
+                                            <a asp-action="Details" asp-controller="Visit" asp-route-id="@visit.Id"
+                                               class="btn btn-sm btn-info">
+                                                <i class="fas fa-eye"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                }
+                else
+                {
+                    <p class="text-muted">There are no recent visits</p>
+                }
+            </div>
+        </div>
+
+        <!-- Top Rated Products -->
+        <div class="card shadow mb-4">
+            <div class="card-header bg-secondary text-white d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">Top Rated Products</h5>
+                <a asp-action="Index" asp-controller="Product" class="btn btn-sm btn-light">View All</a>
+            </div>
+            <div class="card-body">
+                @if (Model.Products.Any())
+                {
+                    <div class="row">
+                        @foreach (var product in Model.Products)
+                        {
+                            <div class="col-md-4 mb-3">
+                                <div class="card h-100">
+                                    <div class="card-body">
+                                        <h5 class="card-title">@product.Name</h5>
+                                        <p class="card-text text-muted">@product.Category?.Name</p>
+                                        <p class="card-text">@(product.Description?.Length > 100 ? product.Description.Substring(0, 100) + "..." : product.Description)</p>
+                                        <div class="rating mb-2">
+                                            @for (int i = 1; i <= 5; i++)
+                                            {
+                                                <i class="fas fa-star @(i <= (product.Rate ?? 0) ? "text-warning" : "text-muted")"></i>
+                                            }
+                                            <span class="ms-1">(@product.Rate?.ToString("0.0"))</span>
+                                        </div>
+                                        <a asp-action="Details" asp-controller="Product" asp-route-id="@product.Id"
+                                           class="btn btn-sm btn-outline-primary">View Details</a>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                }
+                else
+                {
+                    <p class="text-muted bg-light p-3 rounded">There are no products available</p>
+                }
+            </div>
+        </div>
+    </main>
+</div>
+
+<!-- Notification Toast -->
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+    <div id="notificationToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+            <strong class="me-auto">New Notification</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body" id="notificationMessage"></div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.css" rel="stylesheet">
+
+    <script>
+        // Specialization Chart
+        const ctx = document.getElementById('specializationChart').getContext('2d');
+        const specializationChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: [@Html.Raw(string.Join(",", Model.DoctorsBySpecialization.Select(s => $"'{s.Specialization.Name}'")))],
+                datasets: [{
+                    data: [@string.Join(",", Model.DoctorsBySpecialization.Select(s => s.DoctorCount))],
+                    backgroundColor: [
+                        '#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF',
+                        '#FF9F40', '#8AC249', '#EA5F89', '#00BFFF', '#FFD700'
+                    ]
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'right',
+                    }
+                }
+            }
+        });
+
+        // Calendar
+        document.addEventListener('DOMContentLoaded', function() {
+            const calendarEl = document.getElementById('calendar');
+            const calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                headerToolbar: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'dayGridMonth,timeGridWeek,timeGridDay'
+                },
+                events: [
+        @foreach (var visit in Model.RecentVisits.Where(v => v.VisitDate >= DateTime.Today))
+        {
+            <text>
+                            {
+                                title: 'Visit with Dr. @visit.Doctor?.FName',
+                                start: '@visit.VisitDate.ToString("yyyy-MM-dd")',
+                                color: '#36A2EB',
+                                url: '@Url.Action("Details", "Visit", new { id = visit.Id })'
+                            },
+            </text>
+        }
+                ]
+            });
+            calendar.render();
+        });
+
+        // Search Functionality
+        $('#searchButton').click(function() {
+            const query = $('#searchInput').val();
+            if (!query || query.length < 2) {
+                $('#searchResults').html('<div class="alert alert-warning">Please enter at least 2 characters</div>');
+                return;
+            }
+
+            $.get('/MedicalRepDashboard/Search?query=' + encodeURIComponent(query), function(data) {
+                let html = '<div class="row">';
+
+                // Display doctors
+                if(data.doctors && data.doctors.length > 0) {
+                    html += '<div class="col-md-6"><h5>Doctors</h5><div class="list-group">';
+                    data.doctors.forEach(doctor => {
+                        html += `
+                        <a href="#" class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h6 class="mb-1">${doctor.name}</h6>
+                            </div>
+                            <p class="mb-1">${doctor.specialization}</p>
+                            <small>${doctor.location}</small>
+                        </a>`;
+                    });
+                    html += '</div></div>';
+                } else {
+                    html += '<div class="col-md-6"><h5>Doctors</h5><p class="text-muted">No doctors found</p></div>';
+                }
+
+                // Display products
+                if(data.products && data.products.length > 0) {
+                    html += '<div class="col-md-6"><h5>Products</h5><div class="list-group">';
+                    data.products.forEach(product => {
+                        html += `
+                        <a href="#" class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h6 class="mb-1">${product.name}</h6>
+                                <small>${product.rate}/5</small>
+                            </div>
+                            <p class="mb-1">${product.description}</p>
+                        </a>`;
+                    });
+                    html += '</div></div>';
+                } else {
+                    html += '<div class="col-md-6"><h5>Products</h5><p class="text-muted">No products found</p></div>';
+                }
+
+                html += '</div>';
+                $('#searchResults').html(html);
+            }).fail(function() {
+                $('#searchResults').html('<div class="alert alert-danger">Error performing search</div>');
+            });
+        });
+
+        // SignalR Notifications
+        const connection = new signalR.HubConnectionBuilder()
+            .withUrl("@ViewBag.NotificationHubUrl")
+            .configureLogging(signalR.LogLevel.Information)
+            .build();
+
+        connection.on("ReceiveNotification", (message) => {
+            $('#notificationMessage').text(message);
+            const toast = new bootstrap.Toast($('#notificationToast')[0]);
+            toast.show();
+        });
+
+        async function start() {
+            try {
+                await connection.start();
+                console.log("SignalR Connected.");
+                await connection.invoke("JoinGroup", "@User.Identity.Name");
+            } catch (err) {
+                console.log(err);
+                setTimeout(start, 5000);
+            }
+        };
+
+        start();
+    </script>
+}
+
+@functions {
+    public string GetStatusBadgeClass(VisitStatus status)
+    {
+        switch (status)
+        {
+            case VisitStatus.Scheduled: return "bg-primary";
+            case VisitStatus.Completed: return "bg-success";
+            case VisitStatus.Cancelled: return "bg-danger";
+            case VisitStatus.Rescheduled: return "bg-warning";
+            case VisitStatus.NoShow: return "bg-secondary";
+            case VisitStatus.InProgress: return "bg-info";
+            default: return "bg-light text-dark";
+        }
+    }
+}

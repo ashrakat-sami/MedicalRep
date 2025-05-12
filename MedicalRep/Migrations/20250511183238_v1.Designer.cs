@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MedicalRep.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250506212312_v1")]
+    [Migration("20250511183238_v1")]
     partial class v1
     {
         /// <inheritdoc />
@@ -84,6 +84,7 @@ namespace MedicalRep.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PhoneNumber")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("PhoneNumberConfirmed")
@@ -289,6 +290,63 @@ namespace MedicalRep.Migrations
                         });
                 });
 
+            modelBuilder.Entity("MedicalRep.Models.ProductSpecialization", b =>
+                {
+                    b.Property<string>("ProductId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("SpecializationId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ProductId", "SpecializationId");
+
+                    b.HasIndex("SpecializationId");
+
+                    b.ToTable("ProductSpecializations");
+
+                    b.HasData(
+                        new
+                        {
+                            ProductId = "1",
+                            SpecializationId = 1
+                        },
+                        new
+                        {
+                            ProductId = "1",
+                            SpecializationId = 2
+                        },
+                        new
+                        {
+                            ProductId = "1",
+                            SpecializationId = 4
+                        },
+                        new
+                        {
+                            ProductId = "2",
+                            SpecializationId = 3
+                        },
+                        new
+                        {
+                            ProductId = "2",
+                            SpecializationId = 7
+                        },
+                        new
+                        {
+                            ProductId = "2",
+                            SpecializationId = 10
+                        },
+                        new
+                        {
+                            ProductId = "3",
+                            SpecializationId = 7
+                        },
+                        new
+                        {
+                            ProductId = "3",
+                            SpecializationId = 8
+                        });
+                });
+
             modelBuilder.Entity("MedicalRep.Models.Review", b =>
                 {
                     b.Property<int>("Id")
@@ -309,6 +367,9 @@ namespace MedicalRep.Migrations
                     b.Property<string>("ProductId")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("Rating")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("ReviewDate")
                         .HasColumnType("datetime");
@@ -414,32 +475,43 @@ namespace MedicalRep.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("ApplicationUserId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<DateTime?>("ActualVisitDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("DoctorId")
                         .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Feedback")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("MedicalRepId")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
                     b.Property<DateTime>("VisitDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("VisitNotes")
-                        .IsRequired()
                         .HasMaxLength(1000)
                         .HasColumnType("nvarchar(1000)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ApplicationUserId");
+                    b.HasIndex("DoctorId");
 
                     b.HasIndex("MedicalRepId");
 
-                    b.ToTable("Visits", (string)null);
+                    b.ToTable("Visits");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -595,6 +667,25 @@ namespace MedicalRep.Migrations
                     b.Navigation("Category");
                 });
 
+            modelBuilder.Entity("MedicalRep.Models.ProductSpecialization", b =>
+                {
+                    b.HasOne("MedicalRep.Models.Product", "Product")
+                        .WithMany("ProductSpecializations")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MedicalRep.Models.Specialization", "Specialization")
+                        .WithMany("ProductSpecializations")
+                        .HasForeignKey("SpecializationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+
+                    b.Navigation("Specialization");
+                });
+
             modelBuilder.Entity("MedicalRep.Models.Review", b =>
                 {
                     b.HasOne("MedicalRep.Models.ApplicationUser", "Doctor")
@@ -616,17 +707,21 @@ namespace MedicalRep.Migrations
 
             modelBuilder.Entity("MedicalRep.Models.Visit", b =>
                 {
-                    b.HasOne("MedicalRep.Models.ApplicationUser", null)
-                        .WithMany("Visits")
-                        .HasForeignKey("ApplicationUserId");
-
-                    b.HasOne("MedicalRep.Models.ApplicationUser", "User")
-                        .WithMany()
-                        .HasForeignKey("MedicalRepId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                    b.HasOne("MedicalRep.Models.ApplicationUser", "Doctor")
+                        .WithMany("DoctorVisits")
+                        .HasForeignKey("DoctorId")
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.Navigation("User");
+                    b.HasOne("MedicalRep.Models.ApplicationUser", "MedicalRep")
+                        .WithMany("MedicalRepVisits")
+                        .HasForeignKey("MedicalRepId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Doctor");
+
+                    b.Navigation("MedicalRep");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -682,9 +777,11 @@ namespace MedicalRep.Migrations
 
             modelBuilder.Entity("MedicalRep.Models.ApplicationUser", b =>
                 {
-                    b.Navigation("Reviews");
+                    b.Navigation("DoctorVisits");
 
-                    b.Navigation("Visits");
+                    b.Navigation("MedicalRepVisits");
+
+                    b.Navigation("Reviews");
                 });
 
             modelBuilder.Entity("MedicalRep.Models.Category", b =>
@@ -694,12 +791,16 @@ namespace MedicalRep.Migrations
 
             modelBuilder.Entity("MedicalRep.Models.Product", b =>
                 {
+                    b.Navigation("ProductSpecializations");
+
                     b.Navigation("Reviews");
                 });
 
             modelBuilder.Entity("MedicalRep.Models.Specialization", b =>
                 {
                     b.Navigation("Doctors");
+
+                    b.Navigation("ProductSpecializations");
                 });
 #pragma warning restore 612, 618
         }

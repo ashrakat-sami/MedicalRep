@@ -101,6 +101,7 @@ namespace MedicalRep.Controllers
         {
             _logger.LogInformation("GET Create action called");
             var categories = _context.Categories.ToList();
+            ViewBag.Specializations = _context.Specializations.ToList();
             _logger.LogInformation($"Found {categories.Count} categories");
 
             ViewData["CategoryId"] = new SelectList(categories, "Id", "Name");
@@ -109,19 +110,18 @@ namespace MedicalRep.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(Product product, IFormFile Image)
+        public async Task<IActionResult> Create(Product product, IFormFile Image, List<int> SelectedSpecializationIds)
         {
             _logger.LogInformation("POST Create action called");
             _logger.LogInformation($"Received product data: {Newtonsoft.Json.JsonConvert.SerializeObject(product)}");
+            _logger.LogInformation($"Received specializations: {string.Join(",", SelectedSpecializationIds ?? new List<int>())}");
 
             if (ModelState.IsValid)
             {
-                // Load the category to satisfy navigation property requirement
-                //product.Category = await _context.Categories.FindAsync(product.CategoryId);
-
                 _logger.LogInformation("ModelState is valid");
                 product.Id = Guid.NewGuid().ToString();
 
+                // Handle image upload
                 if (Image != null && Image.Length > 0)
                 {
                     _logger.LogInformation("Processing image upload");
@@ -143,14 +143,27 @@ namespace MedicalRep.Controllers
                     _logger.LogInformation("No image uploaded");
                 }
 
-                _logger.LogInformation($"Attempting to add product with CategoryId: {product.CategoryId}");
+                // Handle specializations
+                if (SelectedSpecializationIds != null && SelectedSpecializationIds.Any())
+                {
+                    product.ProductSpecializations = new List<ProductSpecialization>();
+                    foreach (var specId in SelectedSpecializationIds)
+                    {
+                        product.ProductSpecializations.Add(new ProductSpecialization
+                        {
+                            ProductId = product.Id,
+                            SpecializationId = specId
+                        });
+                    }
+                }
+
                 _context.Add(product);
                 await _context.SaveChangesAsync();
                 _logger.LogInformation("Product successfully created");
                 return RedirectToAction(nameof(Index));
             }
 
-            // Log all validation errors
+            // Log validation errors
             _logger.LogWarning("ModelState is invalid. Errors:");
             foreach (var key in ModelState.Keys)
             {
@@ -161,12 +174,9 @@ namespace MedicalRep.Controllers
                 }
             }
 
-            // Log the actual received CategoryId
-            _logger.LogInformation($"Received CategoryId value: {product.CategoryId}");
-
+            // Repopulate needed data for the view
+            ViewBag.Specializations = _context.Specializations.ToList();
             var categories = _context.Categories.ToList();
-            _logger.LogInformation($"Available categories count: {categories.Count}");
-
             ViewData["CategoryId"] = new SelectList(categories, "Id", "Name", product.CategoryId);
             return View(product);
         }
@@ -178,6 +188,7 @@ namespace MedicalRep.Controllers
             if (string.IsNullOrEmpty(id)) return BadRequest();
 
             var product = await _context.Products.FindAsync(id);
+            ViewBag.Specializations = _context.Specializations.ToList();
             if (product == null)
             {
                 _logger.LogWarning($"Product with id {id} not found");
@@ -189,12 +200,14 @@ namespace MedicalRep.Controllers
             return View(product);
         }
 
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, Product product, IFormFile? imageFile, bool removeImage = false)
+        public async Task<IActionResult> Edit(string id, Product product, IFormFile? imageFile, bool removeImage = false, List<int> SelectedSpecializationIds = null)
         {
             _logger.LogInformation($"POST Edit action called for id: {id}");
             _logger.LogInformation($"Received product data: {Newtonsoft.Json.JsonConvert.SerializeObject(product)}");
+            _logger.LogInformation($"Received specializations: {string.Join(",", SelectedSpecializationIds ?? new List<int>())}");
 
             if (id != product.Id)
             {
@@ -214,20 +227,23 @@ namespace MedicalRep.Controllers
                     }
                 }
 
-                _logger.LogInformation($"Received CategoryId value: {product.CategoryId}");
+                ViewBag.Specializations = _context.Specializations.ToList();
                 PopulateCategories(product.CategoryId);
                 Response.StatusCode = 400;
                 return View(product);
             }
 
-            var existingProduct = await _context.Products.FindAsync(id);
+            var existingProduct = await _context.Products
+                .Include(p => p.ProductSpecializations)
+                .FirstOrDefaultAsync(p => p.Id == id);
+
             if (existingProduct == null)
             {
                 _logger.LogWarning($"Product with id {id} not found");
                 return NotFound();
             }
 
-            // Image logic
+            // Handle image
             if (removeImage)
             {
                 _logger.LogInformation("Removing existing image");
@@ -238,9 +254,6 @@ namespace MedicalRep.Controllers
                 _logger.LogInformation("Processing new image upload");
                 existingProduct.Image = await SaveImageAsync(imageFile);
             }
-
-            // Log before updating
-            _logger.LogInformation($"Updating product. Old CategoryId: {existingProduct.CategoryId}, New CategoryId: {product.CategoryId}");
 
             // Update properties
             existingProduct.Name = product.Name;
@@ -258,6 +271,22 @@ namespace MedicalRep.Controllers
             existingProduct.Ingredients = product.Ingredients;
             existingProduct.IsPrescriptionOnly = product.IsPrescriptionOnly;
 
+            // Handle specializations
+            _logger.LogInformation("Updating product specializations");
+            existingProduct.ProductSpecializations.Clear();
+
+            if (SelectedSpecializationIds != null && SelectedSpecializationIds.Any())
+            {
+                foreach (var specId in SelectedSpecializationIds)
+                {
+                    existingProduct.ProductSpecializations.Add(new ProductSpecialization
+                    {
+                        ProductId = existingProduct.Id,
+                        SpecializationId = specId
+                    });
+                }
+            }
+
             try
             {
                 await _context.SaveChangesAsync();
@@ -267,7 +296,11 @@ namespace MedicalRep.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error saving product changes");
-                throw;
+
+                // Repopulate needed data for the view in case of error
+                ViewBag.Specializations = _context.Specializations.ToList();
+                PopulateCategories(product.CategoryId);
+                return View(product);
             }
         }
     }

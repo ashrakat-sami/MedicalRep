@@ -18,9 +18,16 @@ namespace MedicalRep.Models
         // for Drs only 
         public int? SpecializationId { get; set; }
         public Specialization? Specialization { get; set; }
-        public string? Location { get; set; } // for Doctor and MedicalRep
+        public string? Location { get; set; } // for Doctor and MedicalRep => Doctor clinic Location indetails
 
         public ICollection<Review>? Reviews { get; set; } = new List<Review>();
-        public ICollection<Visit>? Visits { get; set; } = new List<Visit>();
+
+        public string PhoneNumber { get; set; } = string.Empty;
+
+
+        public virtual ICollection<Visit> DoctorVisits { get; set; } = new List<Visit>();
+
+        // Visits where this user is the Medical Representative
+        public virtual ICollection<Visit> MedicalRepVisits { get; set; } = new List<Visit>();
     }
 }

@@ -3,92 +3,218 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="PharmaRep - Your pharmaceutical representative platform">
     <title>@ViewData["Title"] - PharmaRep</title>
-    <link rel="icon" type="image/x-icon" href="~/images/icon.png" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/MedicalRep.styles.css" asp-append-version="true" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    @await RenderSectionAsync("Styles", required: false)
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+        }
+
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-color: #f8f9fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        main {
+            flex: 1 0 auto;
+            padding-bottom: 60px;
+        }
+
+        footer {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 20px 0;
+            margin-top: auto;
+        }
+
+        .navbar {
+            background-color: var(--secondary-color) !important;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            color: white !important;
+            font-size: 1.5rem;
+        }
+
+        .nav-link {
+            color: rgba(255,255,255,0.85) !important;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            transition: all 0.3s ease;
+        }
+
+            .nav-link:hover {
+                color: white !important;
+                transform: translateY(-2px);
+            }
+
+        .dropdown-menu {
+            border: none;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        .dropdown-item {
+            padding: 0.5rem 1.5rem;
+            transition: all 0.2s;
+        }
+
+            .dropdown-item:hover {
+                background-color: var(--primary-color);
+                color: white !important;
+            }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 20px;
+        }
+
+            .footer-section h5 {
+                color: var(--primary-color);
+                margin-bottom: 15px;
+                font-weight: 600;
+            }
+
+            .footer-section ul {
+                list-style: none;
+                padding-left: 0;
+            }
+
+                .footer-section ul li {
+                    margin-bottom: 8px;
+                }
+
+                    .footer-section ul li a {
+                        color: rgba(255,255,255,0.7);
+                        text-decoration: none;
+                        transition: color 0.3s;
+                    }
+
+                        .footer-section ul li a:hover {
+                            color: white;
+                        }
+
+        .social-icons a {
+            color: white;
+            margin-right: 15px;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+        }
+
+            .social-icons a:hover {
+                color: var(--primary-color);
+                transform: translateY(-3px);
+            }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3 custom-navbar">
-            <div class="container-fluid">
-                <a class="navbar-brand mx-3" asp-area="" asp-controller="Home" asp-action="Index">PharmaRep</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container">
+                <a class="navbar-brand d-flex align-items-center" asp-controller="Home" asp-action="Index">
+                    <i class="fas fa-prescription-bottle-alt me-2"></i>
+                    PharmaRep
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Product" asp-action="Index">Products</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Doctor" asp-action="Index">Doctors</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Login">Login</a>
-                        </li>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            @if (User.IsInRole("Doctor"))
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-controller="DoctorDashboard" asp-action="Index">
+                                        <i class="fas fa-user-md me-1"></i> Doctor Dashboard
+                                    </a>
+                                </li>
+                            }
+                            @if (User.IsInRole("MedicalRep"))
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-controller="MedicalRepDashboard" asp-action="Index">
+                                        <i class="fas fa-briefcase-medical me-1"></i> MR Dashboard
+                                    </a>
+                                </li>
+                            }
+                        }
                     </ul>
-                    <form class="d-flex mx-5">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit" aria-label="Search button"><i class="bi bi-search"></i></button>
-                    </form>
+                    <partial name="_LoginPartial" />
                 </div>
             </div>
         </nav>
     </header>
 
-    <div class="container">
-        <main role="main" class="pb-3">
+    <main role="main">
+        <div class="container pb-3">
             @RenderBody()
-        </main>
-    </div>
+        </div>
+    </main>
 
-    <footer class="border-top footer text-muted custom-footer py-4">
+    <footer>
         <div class="container">
-            <div class="row">
-                <div class="col-md-3">
-                    <h3>PharmaRep</h3>
-                    <p>Your trusted pharmaceutical platform</p>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h5>About PharmaRep</h5>
+                    <p>Connecting medical representatives with healthcare professionals to improve patient care through better pharmaceutical solutions.</p>
                 </div>
-                <div class="col-md-3">
-                    <h5>Important Links</h5>
-                    <ul class="list-unstyled">
-                        <li><a asp-controller="Product" asp-action="Index">Products</a></li>
-                        <li><a asp-controller="Doctor" asp-action="Index">Doctors</a></li>
+                <div class="footer-section">
+                    <h5>Quick Links</h5>
+                    <ul>
+                        <li><a asp-controller="Home" asp-action="Index"><i class="fas fa-home me-2"></i> Home</a></li>
+                        <li><a href="#"><i class="fas fa-question-circle me-2"></i> FAQs</a></li>
+                        <li><a href="#"><i class="fas fa-envelope me-2"></i> Contact Us</a></li>
+                        <li><a href="#"><i class="fas fa-shield-alt me-2"></i> Privacy Policy</a></li>
                     </ul>
                 </div>
-                <div class="col-md-3 contact">
-                    <h5>Contact Us</h5>
-                    <p><i class="bi bi-telephone"></i> (237) 681-812-255</p>
-                    <p><i class="bi bi-envelope"></i> fildineesoe@gmail.com</p>
-                    <p><i class="bi bi-geo-alt"></i> 0123 Some place, Some country</p>
-                </div>
-                <div class="col-md-3">
-                    <h5>Newsletter</h5>
-                    <div class="input-group">
-                        <input type="email" class="form-control" placeholder="Enter your email" aria-label="Email for newsletter">
-                        <button class="btn btn-primary" type="button" aria-label="Subscribe"><i class="bi bi-send"></i></button>
+                <div class="footer-section">
+                    <h5>Contact Information</h5>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt me-2"></i> 123 Medical St, Mansoura, Egypt</li>
+                        <li><i class="fas fa-phone me-2"></i> +20 100 123 4567</li>
+                        <li><i class="fas fa-envelope me-2"></i> info@pharmarep.com</li>
+                    </ul>
+                    <div class="social-icons mt-3">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
             </div>
-            <hr class="footer-divider">
-            <div class="row">
-                <div class="col-md-6 text-start">
-                    &copy; 2025 PharmaRep - All Rights Reserved
-                </div>
-                <div class="col-md-6 text-end">
-                    <a href="#" class="social-icon" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
-                    <a href="#" class="social-icon" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
-                    <a href="#" class="social-icon" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-                </div>
+            <div class="copyright">
+                &copy; @DateTime.Now.Year - PharmaRep. All rights reserved.
             </div>
         </div>
     </footer>

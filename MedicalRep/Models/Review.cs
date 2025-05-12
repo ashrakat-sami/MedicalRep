@@ -7,11 +7,15 @@ namespace MedicalRep.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        public string DoctorId { get; set; }  // Foreign Key to Doctor
-        public string ProductId { get; set; } // Foreign Key to Product
-        public ApplicationUser Doctor { get; set; } // Navigation Property
-        public Product Product { get; set; } // Navigation Property
-        public string Comment { get; set; } // Optional
+        public string DoctorId { get; set; }
+        public string ProductId { get; set; }
+        public ApplicationUser Doctor { get; set; }
+        public Product Product { get; set; }
+
+        [Range(1, 5)]
+        public int Rating { get; set; }
+
+        public string Comment { get; set; }
         public DateTime ReviewDate { get; set; } = DateTime.UtcNow;
     }
 }

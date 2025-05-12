@@ -122,3 +122,30 @@ body {
     .social-icon:hover {
         color: white;
     }
+/* Doctor Dashboard Styles */
+.doctor-profile-card {
+    position: sticky;
+    top: 20px;
+}
+
+.rating .checked {
+    color: #f39c12;
+}
+
+.stat-card .count {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #3498db;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+    .doctor-dashboard {
+        grid-template-columns: 1fr;
+    }
+
+    .doctor-profile-card {
+        position: static;
+        margin-bottom: 30px;
+    }
+}

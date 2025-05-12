@@ -58,8 +58,11 @@ C:\Users\AYA MAHMOUD\source\repos\MedicalRep\MedicalRep\wwwroot\lib\bootstrap\di
 C:\Users\AYA MAHMOUD\source\repos\MedicalRep\MedicalRep\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.min.js
 wwwroot\css\site.css
 wwwroot\images\icon.png
+wwwroot\images\Mr.jpg
+wwwroot\images\OIP.jpeg
 wwwroot\images\products\9aa9ecd2-dbf8-4cef-9375-9934abfc096e.jpeg
 wwwroot\images\products\Augmantine.jpeg
+wwwroot\images\products\bd936e00-bb28-4a58-9071-320ebd2d6bcd.jpeg
 wwwroot\images\products\Cetal.jpeg
 wwwroot\images\products\Gaviscon.jpeg
 wwwroot\images\products\Lorinase.jpeg

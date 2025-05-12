@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Product>
+
+@{
+    ViewData["Title"] = "Products By Specialization";
+    Layout = "_Layout";
+}
+
+<div class="container">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>@ViewData["Title"]</h2>
+        <a asp-controller="DoctorDashboard" asp-action="Index" class="btn btn-outline-primary">
+            <i class="fas fa-arrow-left me-2"></i>Back to Dashboard
+        </a>
+    </div>
+
+    @if (Model.Any())
+    {
+        <div class="row">
+            @foreach (var product in Model)
+            {
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <img src="@product.Image" class="card-img-top" alt="@product.Name" style="height: 180px; object-fit: contain;">
+                        <div class="card-body">
+                            <h5 class="card-title">@product.Name</h5>
+                            <h6 class="card-subtitle">@(product.Category?.Name ?? "No Category")</h6>
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="text-primary">
+                                    @(product.Price.HasValue ? product.Price.Value.ToString("C", new System.Globalization.CultureInfo("en-US")) : "Price not available")
+                                </span>
+
+
+                                <div class="rating">
+                                    @for (int i = 1; i <= 5; i++)
+                                    {
+                                        <span class="fa @(i <= (product.Rate ?? 0) ? "fa-star checked" : "fa-star")"></span>
+                                    }
+                                </div>
+                            </div>
+                            <p class="card-text">@product.Description?.Substring(0, Math.Min(100, product.Description?.Length ?? 0))...</p>
+                        </div>
+                        <div class="card-footer bg-transparent">
+                            <a asp-action="Details" asp-controller="DoctorDashboard" asp-route-id="@product.Id" class="btn btn-sm btn-outline-primary">
+                                <i class="fas fa-eye"></i> Details
+                            </a>
+                            <a asp-action="ReviewProduct" asp-controller="DoctorDashboard" asp-route-id="@product.Id" class="btn btn-sm btn-outline-success">
+                                <i class="fas fa-star"></i> Review
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-info">
+            No products found for your specialization.
+        </div>
+    }
+</div>

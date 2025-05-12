@@ -9,6 +9,14 @@
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
+      "Id": "C:\\Users\\AYA MAHMOUD\\source\\repos\\MedicalRep\\MedicalRep\\wwwroot\\images\\Mr.jpg",
+      "PackagePath": "staticwebassets\\images\\Mr.jpg"
+    },
+    {
+      "Id": "C:\\Users\\AYA MAHMOUD\\source\\repos\\MedicalRep\\MedicalRep\\wwwroot\\images\\OIP.jpeg",
+      "PackagePath": "staticwebassets\\images\\OIP.jpeg"
+    },
+    {
       "Id": "C:\\Users\\AYA MAHMOUD\\source\\repos\\MedicalRep\\MedicalRep\\wwwroot\\images\\icon.png",
       "PackagePath": "staticwebassets\\images\\icon.png"
     },
@@ -39,6 +47,10 @@
     {
       "Id": "C:\\Users\\AYA MAHMOUD\\source\\repos\\MedicalRep\\MedicalRep\\wwwroot\\images\\products\\Ventolex.jpeg",
       "PackagePath": "staticwebassets\\images\\products\\Ventolex.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\AYA MAHMOUD\\source\\repos\\MedicalRep\\MedicalRep\\wwwroot\\images\\products\\bd936e00-bb28-4a58-9071-320ebd2d6bcd.jpeg",
+      "PackagePath": "staticwebassets\\images\\products\\bd936e00-bb28-4a58-9071-320ebd2d6bcd.jpeg"
     },
     {
       "Id": "C:\\Users\\AYA MAHMOUD\\source\\repos\\MedicalRep\\MedicalRep\\wwwroot\\js\\site.js",

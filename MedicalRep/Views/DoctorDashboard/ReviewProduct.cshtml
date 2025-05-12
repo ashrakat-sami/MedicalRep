@@ -1,0 +1,35 @@
+﻿@model MedicalRep.ViewModels.ReviewViewModel
+
+@{
+    ViewData["Title"] = "Review Product";
+    Layout = "_Layout";
+}
+
+<div class="container">
+    <h2>Review Product</h2>
+
+    <form asp-action="ReviewProduct" method="post">
+        <input type="hidden" asp-for="ProductId" />
+
+        <div class="form-group">
+            <label asp-for="Rating">Rating (1-5)</label>
+            <select asp-for="Rating" class="form-control">
+                <option value="1">1 Star</option>
+                <option value="2">2 Stars</option>
+                <option value="3">3 Stars</option>
+                <option value="4">4 Stars</option>
+                <option value="5">5 Stars</option>
+            </select>
+            <span asp-validation-for="Rating" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Comment">Comments (Optional)</label>
+            <textarea asp-for="Comment" class="form-control" rows="4"></textarea>
+            <span asp-validation-for="Comment" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit Review</button>
+        <a asp-action="ProductsBySpecialization" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>

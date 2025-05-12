@@ -1,0 +1,50 @@
+﻿@model MedicalRep.ViewModels.VisitEditViewModel
+@{
+    ViewData["Title"] = "Edit Visit";
+    Layout = "_Layout";
+}
+
+<h1>Edit Visit</h1>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="Id" />
+    <input type="hidden" asp-for="DoctorId" />
+
+    <div class="form-group">
+        <label>Doctor</label>
+        <p class="form-control-static">@Model.DoctorName</p>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="VisitDate"></label>
+        <input asp-for="VisitDate" class="form-control" />
+        <span asp-validation-for="VisitDate" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="ActualVisitDate"></label>
+        <input asp-for="ActualVisitDate" class="form-control" />
+        <span asp-validation-for="ActualVisitDate" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Status"></label>
+        <select asp-for="Status" asp-items="Html.GetEnumSelectList<VisitStatus>()" class="form-control"></select>
+        <span asp-validation-for="Status" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="VisitNotes"></label>
+        <textarea asp-for="VisitNotes" class="form-control" rows="3"></textarea>
+        <span asp-validation-for="VisitNotes" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Feedback"></label>
+        <textarea asp-for="Feedback" class="form-control" rows="3"></textarea>
+        <span asp-validation-for="Feedback" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save Changes</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>

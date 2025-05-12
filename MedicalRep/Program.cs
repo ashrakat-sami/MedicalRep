@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Identity;
 using MedicalRep.Models;
 using Microsoft.EntityFrameworkCore;
+using MedicalRep.Hubs;
+using Microsoft.AspNetCore.Identity.UI.Services;
 
 namespace MedicalRep
 {
@@ -12,6 +14,8 @@ namespace MedicalRep
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+         
 
             // Add DbContext
             builder.Services.AddDbContext<ApplicationDbContext>(options =>
@@ -30,10 +34,21 @@ namespace MedicalRep
             .AddEntityFrameworkStores<ApplicationDbContext>()
             .AddDefaultTokenProviders();
 
+            // Add email configuration
+            builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("EmailSettings"));
+            builder.Services.AddTransient<IEmailSender, EmailSender>();
+
             // Add Razor Pages support
             builder.Services.AddRazorPages();
-              
 
+            // Add SignalR services
+            builder.Services.AddSignalR();
+            builder.Services.AddAuthorization(options =>
+            {
+                options.AddPolicy("RequireMedicalRepRole", policy => policy.RequireRole("MedicalRep"));
+                options.AddPolicy("RequireDoctorRole", policy => policy.RequireRole("Doctor"));
+                options.AddPolicy("RequireAdminRole", policy => policy.RequireRole("Admin"));
+            });
             // Configure Identity options
             builder.Services.ConfigureApplicationCookie(options =>
             {
@@ -44,7 +59,18 @@ namespace MedicalRep
                 options.SlidingExpiration = true;
             });
 
+
+
             var app = builder.Build();
+
+            //seeed data by using service provider 
+            using (var scope = app.Services.CreateScope())
+            {
+                var services = scope.ServiceProvider;
+                await SeedData.InitializeAsync(services);
+
+            }
+
 
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
@@ -52,6 +78,8 @@ namespace MedicalRep
                 app.UseExceptionHandler("/Home/Error");
                 app.UseHsts();
             }
+            // Configure the HTTP request pipeline
+            app.MapHub<NotificationHub>("/notificationHub");
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();

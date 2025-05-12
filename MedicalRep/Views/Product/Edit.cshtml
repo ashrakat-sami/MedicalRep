@@ -35,7 +35,26 @@
         </select>
         <span asp-validation-for="CategoryId" class="text-danger"></span>
     </div>
-
+    @* Specializations *@
+    <div class="form-group">
+        <label>Specializations</label>
+        @{
+            var specializations = ViewBag.Specializations as IEnumerable<Specialization>;
+            var productSpecializationIds = Model.ProductSpecializations?.Select(ps => ps.SpecializationId).ToList() ?? new List<int>();
+        }
+        <select name="SelectedSpecializationIds" class="form-control" multiple>
+            @if (specializations != null)
+            {
+                foreach (var spec in specializations)
+                {
+                    <option value="@spec.Id"
+                            selected="@(productSpecializationIds.Contains(spec.Id))">
+                        @spec.Name
+                    </option>
+                }
+            }
+        </select>
+    </div>
     <div class="form-group">
         <label asp-for="DosageForm"></label>
         <input asp-for="DosageForm" class="form-control" />

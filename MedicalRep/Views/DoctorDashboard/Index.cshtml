@@ -1,0 +1,185 @@
+﻿@model MedicalRep.ViewModels.DoctorDashboardViewModel
+@{
+    ViewData["Title"] = "Doctor Dashboard";
+    Layout = "_Layout";
+}
+
+@section Styles {
+    <style>
+        .doctor-dashboard {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 20px;
+        }
+
+        .doctor-profile-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .section-title {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+            margin: 30px 0 20px;
+        }
+    </style>
+}
+
+<div class="doctor-dashboard">  
+    <!-- Profile Card Section -->
+    <div class="doctor-profile-card">
+        <img src="/images/OIP.jpeg" class="profile-img" alt="Doctor Avatar">
+        <h3>Dr. @Model.Doctor.FName @Model.Doctor.LName</h3>
+        <p class="text-primary">@Model.Doctor.Specialization?.Name</p>
+
+        <div class="profile-details mt-4">
+            <p><i class="fas fa-map-marker-alt me-2"></i> @Model.Doctor.City,@Model.Doctor.Government</p>
+            <p><i class="fa-solid fa-house-medical-circle-check"></i> Clinic:@Model.Doctor.Location</p>
+            <p><i class="fas fa-envelope me-2"></i> @Model.Doctor.Email</p>
+            <p><i class="fas fa-phone me-2"></i> @Model.Doctor.PhoneNumber</p>
+        </div>
+
+        <div class="quick-links mt-4">
+            <a asp-action="ProductsBySpecialization" asp-controller="DoctorDashboard" class="btn btn-primary w-100 mb-2">
+                <i class="fas fa-pills me-2"></i>Specialized Products
+            </a>
+            <a asp-action="VisitHistory" class="btn btn-secondary w-100 mb-2">
+                <i class="fas fa-calendar-alt me-2"></i>Visit History
+            </a>
+        </div>
+    </div>
+
+    <!-- Main Content Section -->
+    <div class="doctor-main-content">
+        <div class="stats-grid">
+            <div class="stat-card">
+                <h3>Upcoming Visits</h3>
+                <div class="count">@Model.UpcomingVisits.Count</div>
+            </div>
+            <div class="stat-card">
+                <h3>Products Reviewed</h3>
+                <div class="count">@Model.RecentReviews.Count</div>
+            </div>
+            <div class="stat-card">
+                <h3>Completed Visits</h3>
+                <div class="count">@Model.CompletedVisitsCount</div>
+            </div>
+        </div>
+
+        <h2 class="section-title">Top Rated Medical Products</h2>
+        <div class="row">
+            @foreach (var product in Model.TopRatedProducts)
+            {
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <img src="@product.Image" class="card-img-top" alt="@product.Name" style="height: 180px; object-fit: contain;">
+                        <div class="card-body">
+                            <h5 class="card-title">@product.Name</h5>
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="text-primary">
+                                    @(product.Price.HasValue ? product.Price.Value.ToString("C", new System.Globalization.CultureInfo("en-US")) : "Price not available")
+                                </span>
+
+                                <div class="rating">
+                                    @for (int i = 1; i <= 5; i++)
+                                    {
+                                        <span class="fa @(i <= (product.Rate ?? 0) ? "fa-star checked" : "fa-star")"></span>
+                                    }
+                                </div>
+                            </div>
+                            <p class="card-text">@product.Description?.Substring(0, Math.Min(100, product.Description.Length))...</p>
+                        </div>
+                        <div class="card-footer bg-transparent">
+                            <a asp-action="Details" asp-controller="DoctorDashboard" asp-route-id="@product.Id" class="btn btn-sm btn-outline-primary">
+                                <i class="fas fa-eye"></i> Details
+                            </a>
+                            <a asp-action="ReviewProduct" asp-controller="DoctorDashboard" asp-route-id="@product.Id" class="btn btn-sm btn-outline-success">
+                                <i class="fas fa-star"></i> Review
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <h2 class="section-title">Upcoming Visits</h2>
+        @if (Model.UpcomingVisits.Any())
+        {
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Medical Rep</th>
+                            <th>Status</th>
+                            <th>Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var visit in Model.UpcomingVisits)
+                        {
+                            <tr>
+                                <td>@visit.VisitDate.ToString("MMM dd, yyyy hh:mm tt")</td>
+                                <td>@visit.MedicalRep?.FName @visit.MedicalRep?.LName</td>
+                                <td>
+                                    <span class="badge @GetStatusBadgeClass(visit.Status)">
+                                        @visit.Status.ToString()
+                                    </span>
+                                </td>
+                                <td>@visit.VisitNotes</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        }
+        else
+        {
+            <div class="alert alert-info">
+                No upcoming visits scheduled.
+            </div>
+        }
+    </div>
+</div>
+
+@functions {
+    string GetStatusBadgeClass(VisitStatus status)
+    {
+        return status switch
+        {
+            VisitStatus.Scheduled => "bg-primary",
+            VisitStatus.InProgress => "bg-info",
+            VisitStatus.Rescheduled => "bg-warning",
+            VisitStatus.Completed => "bg-success",
+            VisitStatus.Cancelled => "bg-danger",
+            VisitStatus.NoShow => "bg-secondary",
+            _ => "bg-light text-dark"
+        };
+    }
+}

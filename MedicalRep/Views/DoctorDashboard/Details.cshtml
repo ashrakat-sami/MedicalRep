@@ -1,0 +1,72 @@
+﻿@model MedicalRep.Models.Product
+@{
+    ViewData["Title"] = "Product Details";
+    Layout = "_Layout";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <img src="@Model.Image" class="img-fluid" alt="@Model.Name" />
+        </div>
+        <div class="col-md-6">
+            <h2>@Model.Name</h2>
+            <h4>Category: @Model.Category?.Name</h4>
+            <p>Description: @Model.Description</p>
+            <p>Contraindications:@Model.Contraindications</p>
+            <p> Dosage Form: @Model.DosageForm</p>
+            <p>Indications: @Model.Indications</p>
+            <p>Ingredients:[@Model.Ingredients]</p>
+            <p> Manufacturer: @Model.Manufacturer</p>
+            @if ( Model.IsPrescriptionOnly = true)
+            {
+                <p>IsPrescriptionOnly:yes</p>
+            }
+            else
+            {
+                <p>IsPrescriptionOnly:No</p>
+            }
+            
+            <p><strong>Price:</strong> @Model.Price?.ToString("EGP")</p>
+            <p><strong>Rating:</strong> @(Model.Rate?.ToString("0.0") ?? "Not rated") / 5</p>
+
+            <div class="mt-4">
+                <a asp-action="ReviewProduct" asp-route-id="@Model.Id" class="btn btn-primary">
+                    <i class="fas fa-star"></i> Review This Product
+                </a>
+                <a asp-action="ProductsBySpecialization" class="btn btn-secondary ms-2">
+                    Back to Products
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-5">
+        <h3>Reviews</h3>
+        @if (Model.Reviews.Any())
+        {
+            foreach (var review in Model.Reviews)
+            {
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Dr. @review.Doctor?.FName @review.Doctor?.LName</h5>
+                        <div class="rating mb-2">
+                            @for (int i = 1; i <= 5; i++)
+                            {
+                                <span class="fa @(i <= review.Rating ? "fa-star checked" : "fa-star")"></span>
+                            }
+                        </div>
+                        <p class="card-text">@review.Comment</p>
+                        <small class="text-muted">@review.ReviewDate.ToString("MMMM dd, yyyy")</small>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <div class="alert alert-info">
+                No reviews yet for this product.
+            </div>
+        }
+    </div>
+</div>

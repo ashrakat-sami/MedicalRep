@@ -196,12 +196,36 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/AYA MAHMOUD/source/repos/MedicalRep/MedicalRep/Views/DoctorDashboard/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9jdG9yRGFzaGJvYXJkXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/AYA MAHMOUD/source/repos/MedicalRep/MedicalRep/Views/DoctorDashboard/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9jdG9yRGFzaGJvYXJkXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/AYA MAHMOUD/source/repos/MedicalRep/MedicalRep/Views/DoctorDashboard/ProductsBySpecialization.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9jdG9yRGFzaGJvYXJkXFByb2R1Y3RzQnlTcGVjaWFsaXphdGlvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/AYA MAHMOUD/source/repos/MedicalRep/MedicalRep/Views/DoctorDashboard/ReviewProduct.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9jdG9yRGFzaGJvYXJkXFJldmlld1Byb2R1Y3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/AYA MAHMOUD/source/repos/MedicalRep/MedicalRep/Views/DoctorDashboard/VisitHistory.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9jdG9yRGFzaGJvYXJkXFZpc2l0SGlzdG9yeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/AYA MAHMOUD/source/repos/MedicalRep/MedicalRep/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/AYA MAHMOUD/source/repos/MedicalRep/MedicalRep/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/AYA MAHMOUD/source/repos/MedicalRep/MedicalRep/Views/MedicalRepDashboard/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVkaWNhbFJlcERhc2hib2FyZFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/AYA MAHMOUD/source/repos/MedicalRep/MedicalRep/Views/Product/Create.cshtml]
@@ -234,6 +258,26 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/AYA MAHMOUD/source/repos/MedicalRep/MedicalRep/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/AYA MAHMOUD/source/repos/MedicalRep/MedicalRep/Views/Visit/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlzaXRcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/AYA MAHMOUD/source/repos/MedicalRep/MedicalRep/Views/Visit/DeleteConfirmed.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlzaXRcRGVsZXRlQ29uZmlybWVkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/AYA MAHMOUD/source/repos/MedicalRep/MedicalRep/Views/Visit/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlzaXRcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/AYA MAHMOUD/source/repos/MedicalRep/MedicalRep/Views/Visit/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlzaXRcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/AYA MAHMOUD/source/repos/MedicalRep/MedicalRep/Views/Visit/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlzaXRcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/AYA MAHMOUD/source/repos/MedicalRep/MedicalRep/Views/_ViewImports.cshtml]

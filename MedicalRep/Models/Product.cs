@@ -53,7 +53,17 @@ namespace MedicalRep.Models
             public  Category? Category { get; set; }
 
          public virtual ICollection<Review> Reviews { set; get; } = new HashSet<Review>();
-        }
+        public virtual ICollection<ProductSpecialization> ProductSpecializations { get; set; } = new HashSet<ProductSpecialization>();
     }
+
+    public class ProductSpecialization
+    {
+        public int SpecializationId { get; set; }
+        public string ProductId { get; set; }
+
+        public Specialization Specialization { get; set; }
+        public Product Product { get; set; }
+    }
+}
 
     

@@ -81,6 +81,7 @@ namespace MedicalRep.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PhoneNumber")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("PhoneNumberConfirmed")
@@ -283,6 +284,261 @@ namespace MedicalRep.Migrations
                             Rate = 4.0m,
                             SideEffects = "Constipation, nausea.",
                             Strength = "500mg"
+                        },
+                        new
+                        {
+                            Id = "4",
+                            CategoryId = 2,
+                            Contraindications = "Hypersensitivity to cephalosporins.",
+                            Description = "Third-generation cephalosporin antibiotic for serious infections.",
+                            DosageForm = "Injection",
+                            ExpiryDate = new DateTime(2025, 11, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Image = "https://th.bing.com/th/id/OIP.yu5HYMc0tyh-yWebIPCldgAAAA?cb=iwc2&rs=1&pid=ImgDetMain",
+                            Indications = "Severe bacterial infections, meningitis, pneumonia.",
+                            Ingredients = "Ceftriaxone sodium",
+                            IsPrescriptionOnly = true,
+                            Manufacturer = "Roche",
+                            Name = "Ceftriaxone (Rocephin)",
+                            Price = 85.00m,
+                            Rate = 4.7m,
+                            SideEffects = "Diarrhea, rash, pain at injection site.",
+                            Strength = "1g/vial"
+                        },
+                        new
+                        {
+                            Id = "5",
+                            CategoryId = 1,
+                            Contraindications = "Severe liver impairment.",
+                            Description = "Egyptian paracetamol for pain and fever relief.",
+                            DosageForm = "Tablet",
+                            ExpiryDate = new DateTime(2026, 1, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Image = "https://th.bing.com/th/id/OIP.mkMq7pl1TZqmgElVI1MgmwHaHa?cb=iwc2&rs=1&pid=ImgDetMain",
+                            Indications = "Headache, fever, mild to moderate pain.",
+                            Ingredients = "Paracetamol",
+                            IsPrescriptionOnly = false,
+                            Manufacturer = "EIPICO",
+                            Name = "Adol (Paracetamol)",
+                            Price = 8.00m,
+                            Rate = 4.2m,
+                            SideEffects = "Rare at therapeutic doses.",
+                            Strength = "500mg"
+                        },
+                        new
+                        {
+                            Id = "6",
+                            CategoryId = 3,
+                            Contraindications = "GI hemorrhage, mechanical obstruction.",
+                            Description = "For nausea, vomiting, bloating and heartburn.",
+                            DosageForm = "Tablet",
+                            ExpiryDate = new DateTime(2025, 8, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Image = "https://th.bing.com/th/id/OIP.inCIZfWjCvKuX6NslxK66gHaHa?cb=iwc2&rs=1&pid=ImgDetMain",
+                            Indications = "Gastric motility disorders, nausea, vomiting.",
+                            Ingredients = "Domperidone maleate",
+                            IsPrescriptionOnly = false,
+                            Manufacturer = "Misr Pharma",
+                            Name = "Digest (Domperidone)",
+                            Price = 12.50m,
+                            Rate = 4.3m,
+                            SideEffects = "Dry mouth, headache, diarrhea.",
+                            Strength = "10mg"
+                        },
+                        new
+                        {
+                            Id = "7",
+                            CategoryId = 2,
+                            Contraindications = "Pregnancy, severe coronary artery disease.",
+                            Description = "Improves cerebral circulation and cognitive function.",
+                            DosageForm = "Tablet",
+                            ExpiryDate = new DateTime(2025, 9, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Image = "https://cdn.youmed.vn/tin-tuc/wp-content/uploads/2020/04/thuoc-cavinton-5mg.jpg",
+                            Indications = "Cerebrovascular disorders, memory impairment.",
+                            Ingredients = "Vinpocetine",
+                            IsPrescriptionOnly = true,
+                            Manufacturer = "Gulf Pharmaceutical Industries",
+                            Name = "Cavinton (Vinpocetine)",
+                            Price = 45.00m,
+                            Rate = 4.4m,
+                            SideEffects = "Dizziness, nausea, sleep disturbances.",
+                            Strength = "5mg"
+                        },
+                        new
+                        {
+                            Id = "8",
+                            CategoryId = 3,
+                            Contraindications = "Concomitant use with rilpivirine.",
+                            Description = "Proton pump inhibitor for acid-related disorders.",
+                            DosageForm = "Capsule",
+                            ExpiryDate = new DateTime(2025, 10, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Image = "https://prospecte.ro/images/omez-20-mg-omeprazol-caps-gastrorez.jpg",
+                            Indications = "GERD, peptic ulcers, Zollinger-Ellison syndrome.",
+                            Ingredients = "Omeprazole",
+                            IsPrescriptionOnly = false,
+                            Manufacturer = "Dr. Reddy's",
+                            Name = "Omez (Omeprazole)",
+                            Price = 35.00m,
+                            Rate = 4.6m,
+                            SideEffects = "Headache, diarrhea, abdominal pain.",
+                            Strength = "20mg"
+                        },
+                        new
+                        {
+                            Id = "9",
+                            CategoryId = 1,
+                            Contraindications = "Acute intoxication, MAOI use.",
+                            Description = "Opioid analgesic for moderate to severe pain.",
+                            DosageForm = "Capsule",
+                            ExpiryDate = new DateTime(2025, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Image = "https://th.bing.com/th/id/R.8952c303f57ef1212b064cd84f03ce03?rik=0TC1X2cQDWe3ZQ&pid=ImgRaw&r=0",
+                            Indications = "Moderate to severe pain management.",
+                            Ingredients = "Tramadol hydrochloride",
+                            IsPrescriptionOnly = true,
+                            Manufacturer = "Minapharm",
+                            Name = "Tramal (Tramadol)",
+                            Price = 55.00m,
+                            Rate = 4.1m,
+                            SideEffects = "Nausea, dizziness, constipation.",
+                            Strength = "50mg"
+                        },
+                        new
+                        {
+                            Id = "10",
+                            CategoryId = 1,
+                            Contraindications = "Acute heart failure, cardiogenic shock.",
+                            Description = "Beta-blocker for hypertension and heart conditions.",
+                            DosageForm = "Tablet",
+                            ExpiryDate = new DateTime(2025, 7, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Image = "https://th.bing.com/th/id/OIP.B_Q0EkQC8jh5KjK0ndGYcwHaHG?w=193&h=185&c=7&r=0&o=5&cb=iwc2&dpr=1.3&pid=1.7",
+                            Indications = "Hypertension, angina, heart failure.",
+                            Ingredients = "Metoprolol tartrate",
+                            IsPrescriptionOnly = true,
+                            Manufacturer = "Novartis",
+                            Name = "Betaloc (Metoprolol)",
+                            Price = 40.00m,
+                            Rate = 4.5m,
+                            SideEffects = "Fatigue, dizziness, bradycardia.",
+                            Strength = "50mg"
+                        });
+                });
+
+            modelBuilder.Entity("MedicalRep.Models.ProductSpecialization", b =>
+                {
+                    b.Property<string>("ProductId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("SpecializationId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ProductId", "SpecializationId");
+
+                    b.HasIndex("SpecializationId");
+
+                    b.ToTable("ProductSpecializations");
+
+                    b.HasData(
+                        new
+                        {
+                            ProductId = "1",
+                            SpecializationId = 1
+                        },
+                        new
+                        {
+                            ProductId = "1",
+                            SpecializationId = 2
+                        },
+                        new
+                        {
+                            ProductId = "1",
+                            SpecializationId = 4
+                        },
+                        new
+                        {
+                            ProductId = "2",
+                            SpecializationId = 3
+                        },
+                        new
+                        {
+                            ProductId = "2",
+                            SpecializationId = 7
+                        },
+                        new
+                        {
+                            ProductId = "2",
+                            SpecializationId = 10
+                        },
+                        new
+                        {
+                            ProductId = "3",
+                            SpecializationId = 7
+                        },
+                        new
+                        {
+                            ProductId = "3",
+                            SpecializationId = 8
+                        },
+                        new
+                        {
+                            ProductId = "4",
+                            SpecializationId = 3
+                        },
+                        new
+                        {
+                            ProductId = "4",
+                            SpecializationId = 7
+                        },
+                        new
+                        {
+                            ProductId = "4",
+                            SpecializationId = 10
+                        },
+                        new
+                        {
+                            ProductId = "5",
+                            SpecializationId = 1
+                        },
+                        new
+                        {
+                            ProductId = "5",
+                            SpecializationId = 2
+                        },
+                        new
+                        {
+                            ProductId = "5",
+                            SpecializationId = 4
+                        },
+                        new
+                        {
+                            ProductId = "6",
+                            SpecializationId = 7
+                        },
+                        new
+                        {
+                            ProductId = "7",
+                            SpecializationId = 2
+                        },
+                        new
+                        {
+                            ProductId = "7",
+                            SpecializationId = 6
+                        },
+                        new
+                        {
+                            ProductId = "8",
+                            SpecializationId = 7
+                        },
+                        new
+                        {
+                            ProductId = "9",
+                            SpecializationId = 1
+                        },
+                        new
+                        {
+                            ProductId = "9",
+                            SpecializationId = 4
+                        },
+                        new
+                        {
+                            ProductId = "10",
+                            SpecializationId = 1
                         });
                 });
 
@@ -306,6 +562,9 @@ namespace MedicalRep.Migrations
                     b.Property<string>("ProductId")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("Rating")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("ReviewDate")
                         .HasColumnType("datetime");
@@ -411,32 +670,43 @@ namespace MedicalRep.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("ApplicationUserId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<DateTime?>("ActualVisitDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("DoctorId")
                         .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Feedback")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("MedicalRepId")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
                     b.Property<DateTime>("VisitDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("VisitNotes")
-                        .IsRequired()
                         .HasMaxLength(1000)
                         .HasColumnType("nvarchar(1000)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ApplicationUserId");
+                    b.HasIndex("DoctorId");
 
                     b.HasIndex("MedicalRepId");
 
-                    b.ToTable("Visits", (string)null);
+                    b.ToTable("Visits");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -592,6 +862,25 @@ namespace MedicalRep.Migrations
                     b.Navigation("Category");
                 });
 
+            modelBuilder.Entity("MedicalRep.Models.ProductSpecialization", b =>
+                {
+                    b.HasOne("MedicalRep.Models.Product", "Product")
+                        .WithMany("ProductSpecializations")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MedicalRep.Models.Specialization", "Specialization")
+                        .WithMany("ProductSpecializations")
+                        .HasForeignKey("SpecializationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+
+                    b.Navigation("Specialization");
+                });
+
             modelBuilder.Entity("MedicalRep.Models.Review", b =>
                 {
                     b.HasOne("MedicalRep.Models.ApplicationUser", "Doctor")
@@ -613,17 +902,21 @@ namespace MedicalRep.Migrations
 
             modelBuilder.Entity("MedicalRep.Models.Visit", b =>
                 {
-                    b.HasOne("MedicalRep.Models.ApplicationUser", null)
-                        .WithMany("Visits")
-                        .HasForeignKey("ApplicationUserId");
-
-                    b.HasOne("MedicalRep.Models.ApplicationUser", "User")
-                        .WithMany()
-                        .HasForeignKey("MedicalRepId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                    b.HasOne("MedicalRep.Models.ApplicationUser", "Doctor")
+                        .WithMany("DoctorVisits")
+                        .HasForeignKey("DoctorId")
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.Navigation("User");
+                    b.HasOne("MedicalRep.Models.ApplicationUser", "MedicalRep")
+                        .WithMany("MedicalRepVisits")
+                        .HasForeignKey("MedicalRepId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Doctor");
+
+                    b.Navigation("MedicalRep");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -679,9 +972,11 @@ namespace MedicalRep.Migrations
 
             modelBuilder.Entity("MedicalRep.Models.ApplicationUser", b =>
                 {
-                    b.Navigation("Reviews");
+                    b.Navigation("DoctorVisits");
 
-                    b.Navigation("Visits");
+                    b.Navigation("MedicalRepVisits");
+
+                    b.Navigation("Reviews");
                 });
 
             modelBuilder.Entity("MedicalRep.Models.Category", b =>
@@ -691,12 +986,16 @@ namespace MedicalRep.Migrations
 
             modelBuilder.Entity("MedicalRep.Models.Product", b =>
                 {
+                    b.Navigation("ProductSpecializations");
+
                     b.Navigation("Reviews");
                 });
 
             modelBuilder.Entity("MedicalRep.Models.Specialization", b =>
                 {
                     b.Navigation("Doctors");
+
+                    b.Navigation("ProductSpecializations");
                 });
 #pragma warning restore 612, 618
         }

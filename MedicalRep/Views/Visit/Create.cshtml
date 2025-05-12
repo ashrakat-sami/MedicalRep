@@ -1,0 +1,115 @@
+﻿@model MedicalRep.ViewModels.VisitViewModel
+@{
+    ViewData["Title"] = "Create Visit";
+    Layout = "_Layout";
+}
+
+<h1>Add new Visit</h1>
+
+<form asp-action="Create" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div class="form-group">
+        <div class="form-check">
+            <input class="form-check-input" asp-for="IsNewDoctor" />
+            <label class="form-check-label" asp-for="IsNewDoctor">Register new doctor</label>
+        </div>
+    </div>
+
+    <div id="existingDoctorSection" style="@(Model.IsNewDoctor ? "display:none" : "")">
+        <div class="form-group">
+            <label asp-for="DoctorId">Select Doctor</label>
+            <select asp-for="DoctorId" asp-items="@(ViewBag.Doctors ?? new SelectList(Enumerable.Empty<SelectListItem>()))" class="form-control">
+                <option value="">-- Select Doctor --</option>
+            </select>
+            <span asp-validation-for="DoctorId" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div id="newDoctorSection" style="@(Model.IsNewDoctor ? "" : "display:none")">
+        <h4>Doctor Information</h4>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="NewDoctorFirstName"></label>
+                    <input asp-for="NewDoctorFirstName" class="form-control" />
+                    <span asp-validation-for="NewDoctorFirstName" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="NewDoctorLastName"></label>
+                    <input asp-for="NewDoctorLastName" class="form-control" />
+                    <span asp-validation-for="NewDoctorLastName" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="NewDoctorEmail"></label>
+            <input asp-for="NewDoctorEmail" class="form-control" />
+            <span asp-validation-for="NewDoctorEmail" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="NewDoctorPhone"></label>
+            <input asp-for="NewDoctorPhone" class="form-control" />
+            <span asp-validation-for="NewDoctorPhone" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="NewDoctorLocation"></label>
+            <input asp-for="NewDoctorLocation" class="form-control" />
+            <span asp-validation-for="NewDoctorLocation" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="NewDoctorSpecializationId"></label>
+            <select asp-for="NewDoctorSpecializationId" asp-items="@(ViewBag.Specializations ?? new SelectList(Enumerable.Empty<SelectListItem>()))" class="form-control">
+                <option value="">-- Select Specialization --</option>
+            </select>
+            <span asp-validation-for="NewDoctorSpecializationId" class="text-danger"></span>
+        </div>
+    </div>
+
+    <h4>Visit Information</h4>
+    <div class="form-group">
+        <label asp-for="VisitDate"></label>
+        <input asp-for="VisitDate" class="form-control" type="datetime-local" />
+        <span asp-validation-for="VisitDate" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="VisitNotes"></label>
+        <textarea asp-for="VisitNotes" class="form-control" rows="3"></textarea>
+        <span asp-validation-for="VisitNotes" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save Visit</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        $(document).ready(function () {
+            // Initialize the toggle
+            toggleDoctorSections();
+
+            // Handle changes
+            $('#IsNewDoctor').change(function () {
+                toggleDoctorSections();
+            });
+
+            function toggleDoctorSections() {
+                if ($('#IsNewDoctor').is(':checked')) {
+                    $('#existingDoctorSection').hide();
+                    $('#newDoctorSection').show();
+                } else {
+                    $('#existingDoctorSection').show();
+                    $('#newDoctorSection').hide();
+                }
+            }
+        });
+    </script>
+}

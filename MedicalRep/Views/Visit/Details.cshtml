@@ -1,0 +1,79 @@
+﻿@model MedicalRep.Models.Visit
+
+@{
+    ViewData["Title"] = "Visit Details";
+    Layout = "_Layout";
+}
+
+<div class="card shadow">
+    <div class="card-header bg-primary text-white">
+        <h4 class="mb-0">Visit Details</h4>
+    </div>
+    <div class="card-body">
+        <div class="row mb-4">
+            <div class="col-md-6">
+                <h5>Doctor Information</h5>
+                <hr />
+                <p><strong>Name:</strong> DR. @Model.Doctor?.FName @Model.Doctor?.LName</p>
+                <p><strong>Specialization:</strong> @Model.Doctor?.Specialization?.Name</p>
+                <p><strong>Clinic Location:</strong> @Model.Doctor?.Location</p>
+                <p><strong>Phone:</strong> @Model.Doctor?.PhoneNumber</p>
+                <p><strong>Email:</strong> <a href="mailto:@Model.Doctor?.Email">@Model.Doctor?.Email</a></p>
+            </div>
+            <div class="col-md-6">
+                <h5>Visit Information</h5>
+                <hr />
+                <p><strong>Scheduled Date:</strong> @Model.VisitDate.ToString("MMM dd, yyyy hh:mm tt")</p>
+                <p><strong>Actual Date:</strong> @(Model.ActualVisitDate?.ToString("MMM dd, yyyy hh:mm tt") ?? "N/A")</p>
+                <p><strong>Status:</strong> <span class="badge @GetStatusBadgeClass(Model.Status)">@Model.Status.ToString()</span></p>
+                <p><strong>Medical Rep:</strong> MR. @Model.MedicalRep?.FName @Model.MedicalRep?.LName</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <h5>Notes & Feedback</h5>
+                <hr />
+                <div class="mb-3">
+                    <p><strong>Visit Notes:</strong></p>
+                    <div class="card card-body bg-light">
+                        @Model.VisitNotes
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <p><strong>Feedback:</strong></p>
+                    <div class="card card-body bg-light">
+                        @Model.Feedback
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer">
+        <a asp-action="Index" class="btn btn-secondary">Back to Visits</a>
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Edit</a>
+    </div>
+</div>
+
+@functions {
+    public string GetStatusBadgeClass(VisitStatus status)
+    {
+        switch (status)
+        {
+            case VisitStatus.Scheduled:
+                return "badge-primary";
+            case VisitStatus.Completed:
+                return "badge-success";
+            case VisitStatus.Cancelled:
+                return "badge-danger";
+            case VisitStatus.Rescheduled:
+                return "badge-warning";
+            case VisitStatus.NoShow:
+                return "badge-secondary";
+            case VisitStatus.InProgress:
+                return "badge-info";
+            default:
+                return "badge-light";
+        }
+    }
+}

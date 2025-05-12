@@ -89,8 +89,8 @@ namespace MedicalRep.Controllers
 
                 return model.SelectedRole switch
                 {
-                    "Doctor" => RedirectToAction("Index", "Home"),
-                    "MedicalRep" => RedirectToAction("Index", "Home"),
+                    "Doctor" => RedirectToAction("Index", "DoctorDashboard"),
+                    "MedicalRep" => RedirectToAction("Index", "MedicalRepDashboard"),
                     _ => RedirectToAction("Index", "Home")
                 };
             }
@@ -164,12 +164,23 @@ namespace MedicalRep.Controllers
                         _logger.LogInformation("Login succeeded for {Email}", model.Email);
 
                         var roles = await _userManager.GetRolesAsync(user);
-                        if (roles.Contains("Admin") || roles.Contains("Doctor") || roles.Contains("MedicalRep"))
+                        if (roles.Contains("Admin"))
                         {
-                            return RedirectToAction("Index", "Product");
+                            return RedirectToAction("Index", "Home");
+                        }
+                        else if (roles.Contains("Doctor"))
+                        {
+                            return RedirectToAction("Index", "DoctorDashboard");
+                        }
+                        else if (roles.Contains("MedicalRep"))
+                        {
+                            return RedirectToAction("Index", "MedicalRepDashboard");
+                        }
+                        else
+                        {
+                            _logger.LogWarning("Login failed: user has no valid role - {Email}", model.Email);
                         }
 
-                        return RedirectToLocal(returnUrl);
                     }
                     else
                     {
@@ -192,7 +203,7 @@ namespace MedicalRep.Controllers
         {
             await _signInManager.SignOutAsync();
             _logger.LogInformation("User logged out");
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("", "Home");
         }
 
         [Authorize(Roles = "Admin")]

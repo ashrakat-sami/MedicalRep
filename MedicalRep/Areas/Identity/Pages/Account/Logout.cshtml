@@ -4,18 +4,46 @@
     ViewData["Title"] = "Log out";
 }
 
-<header>
-    <h1>@ViewData["Title"]</h1>
-    @{
-        if (User.Identity?.IsAuthenticated ?? false)
-        {
-            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
-                <button type="submit" class="nav-link btn btn-link text-dark">Click here to Logout</button>
-            </form>
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card shadow-lg">
+                <div class="card-header bg-primary text-white">
+                    <div class="text-center">
+                        <i class="fas fa-sign-out-alt fa-3x mb-3"></i>
+                        <h2>@ViewData["Title"]</h2>
+                    </div>
+                </div>
+                <div class="card-body p-5 text-center">
+                    <p>Are you sure you want to log out?</p>
+
+                    <form method="post">
+                        <div class="d-flex justify-content-center gap-3">
+                            <button type="submit" class="btn btn-danger btn-lg">
+                                <i class="fas fa-check-circle me-2"></i> Yes, Logout
+                            </button>
+                            <a href="/" class="btn btn-secondary btn-lg">
+                                <i class="fas fa-times-circle me-2"></i> Cancel
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Styles {
+    <style>
+        .card {
+            border-radius: 15px;
+            overflow: hidden;
+            border: none;
         }
-        else
-        {
-            <p>You have successfully logged out of the application.</p>
+
+        .card-header {
+            padding: 2rem;
+            border-bottom: none;
         }
-    }
-</header>
+    </style>
+}

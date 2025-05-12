@@ -120,6 +120,7 @@ namespace MedicalRep.Migrations
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
                     SpecializationId = table.Column<int>(type: "int", nullable: true),
                     Location = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -128,7 +129,6 @@ namespace MedicalRep.Migrations
                     PasswordHash = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     SecurityStamp = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ConcurrencyStamp = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     PhoneNumberConfirmed = table.Column<bool>(type: "bit", nullable: false),
                     TwoFactorEnabled = table.Column<bool>(type: "bit", nullable: false),
                     LockoutEnd = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
@@ -147,6 +147,30 @@ namespace MedicalRep.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "ProductSpecializations",
+                columns: table => new
+                {
+                    SpecializationId = table.Column<int>(type: "int", nullable: false),
+                    ProductId = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ProductSpecializations", x => new { x.ProductId, x.SpecializationId });
+                    table.ForeignKey(
+                        name: "FK_ProductSpecializations_Products_ProductId",
+                        column: x => x.ProductId,
+                        principalTable: "Products",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_ProductSpecializations_Specializations_SpecializationId",
+                        column: x => x.SpecializationId,
+                        principalTable: "Specializations",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Reviews",
                 columns: table => new
                 {
@@ -154,6 +178,7 @@ namespace MedicalRep.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     DoctorId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     ProductId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Rating = table.Column<int>(type: "int", nullable: false),
                     Comment = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false),
                     ReviewDate = table.Column<DateTime>(type: "datetime", nullable: false)
                 },
@@ -265,26 +290,31 @@ namespace MedicalRep.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    DoctorId = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    DoctorId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     MedicalRepId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     VisitDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    VisitNotes = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false),
-                    ApplicationUserId = table.Column<string>(type: "nvarchar(450)", nullable: true)
+                    VisitNotes = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: true),
+                    Status = table.Column<int>(type: "int", nullable: false),
+                    ActualVisitDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Feedback = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Visits", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Visits_Users_ApplicationUserId",
-                        column: x => x.ApplicationUserId,
+                        name: "FK_Visits_Users_DoctorId",
+                        column: x => x.DoctorId,
                         principalTable: "Users",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Visits_Users_MedicalRepId",
                         column: x => x.MedicalRepId,
                         principalTable: "Users",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.InsertData(
@@ -318,24 +348,39 @@ namespace MedicalRep.Migrations
                 });
 
             migrationBuilder.InsertData(
-               table: "Products",
-               columns: new[] { "Id", "CategoryId", "Contraindications", "Description", "DosageForm", "ExpiryDate", "Image", "Indications", "Ingredients", "IsPrescriptionOnly", "Manufacturer", "Name", "Price", "Rate", "SideEffects", "Strength" },
-               values: new object[,]
-               {
-                { "1", 1, "Liver disease, alcohol use.", "Analgesic and antipyretic used to reduce pain and fever.", "Tablet", new DateTime(2025, 12, 31), "images/products/Cetal.jpeg", "Headaches, fever, flu.", "Paracetamol", false, "El Nasr Pharmaceutical", "Cetal", 4.00m, 4.4m, "Liver toxicity if overdosed.", "500mg" },
-                { "2", 2, "Allergy to penicillins.", "Broad-spectrum antibiotic for bacterial infections.", "Capsule", new DateTime(2026, 1, 15), "images/products/Augmantine.jpeg", "Respiratory, urinary, and skin infections.", "Amoxicillin + Clavulanic acid", true, "Hikma Pharma", "Augmentin", 18.00m, 4.7m, "Nausea, diarrhea, rash.", "625mg" },
-                { "3", 3, "Severe kidney disease.", "Antacid for heartburn and indigestion relief.", "Tablet", new DateTime(2025, 9, 30), "images/products/Gaviscon.jpeg", "Acid reflux, indigestion.", "Alginic acid + Sodium bicarbonate", false, "Delta Pharma", "Gaviscon", 6.50m, 4.0m, "Bloating, nausea.", "500mg" },
-                { "4", 4, "Heart conditions, high blood pressure.", "Bronchodilator for asthma symptoms.", "Inhaler", new DateTime(2026, 2, 1), "images/products/Ventolex.jpeg", "Bronchial asthma, wheezing.", "Salbutamol", true, "Medical Union Pharmaceuticals", "Ventolex", 15.00m, 4.3m, "Tremors, nervousness.", "100mcg/dose" },
-                { "5", 5, "Severe liver disease.", "Antihistamine for allergy symptoms.", "Tablet", new DateTime(2025, 11, 1), "images/products/Lorinase.jpeg", "Allergic rhinitis, hay fever.", "Loratadine + Pseudoephedrine", false, "Global Napi Pharmaceuticals", "Lorinase", 9.00m, 4.2m, "Dry mouth, dizziness.", "10mg" },
-                { "6", 6, "Glaucoma, urinary retention.", "Antispasmodic used for stomach cramps and IBS.", "Tablet", new DateTime(2025, 8, 20), "images/products/Spasmoproct.jpeg", "Abdominal cramps, IBS.", "Hyoscine Butylbromide", true, "Amoun Pharmaceutical Co.", "Spasmoproct", 7.50m, 4.1m, "Dry mouth, blurred vision.", "10mg" }
-               });
+                table: "Products",
+                columns: new[] { "Id", "CategoryId", "Contraindications", "Description", "DosageForm", "ExpiryDate", "Image", "Indications", "Ingredients", "IsPrescriptionOnly", "Manufacturer", "Name", "Price", "Rate", "SideEffects", "Strength" },
+                values: new object[,]
+                {
+                    { "1", 1, "Liver disease, alcohol consumption.", "Used to relieve pain and reduce fever.", "Tablet", new DateTime(2025, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified), "https://abclive1.s3.amazonaws.com/2c2edf5e-aa5c-4940-b5c6-6eb1ac32a016/productimage/5099627630375___XL.jpg", "Used for headaches, body aches, and fever.", "Paracetamol", false, "Panadol Inc.", "Panadol", 6.00m, 4.5m, "Nausea, dizziness, stomach upset.", "500mg" },
+                    { "2", 2, "Allergy to penicillin.", "Antibiotic used to treat bacterial infections.", "Capsule", new DateTime(2025, 6, 30, 0, 0, 0, 0, DateTimeKind.Unspecified), "https://th.bing.com/th/id/OIP.mzw9ErLwuoZUehYkv18gbgHaFX?w=254&h=183&c=7&r=0&o=5&dpr=1.3&pid=1.7", "Used for respiratory and urinary tract infections.", "Amoxicillin", true, "Amoxicillin Ltd.", "Amoxicillin", 12.00m, 5.0m, "Rash, diarrhea, nausea.", "250mg" },
+                    { "3", 3, "Kidney disease.", "Antacid used to relieve heartburn and indigestion.", "Chewable Tablet", new DateTime(2024, 5, 30, 0, 0, 0, 0, DateTimeKind.Unspecified), "https://th.bing.com/th/id/OIP.k7jkYQfLMGsV5yMr_mG6kwHaHa?w=188&h=188&c=7&r=0&o=5&dpr=1.3&pid=1.7", "Relieves heartburn, acid indigestion, and upset stomach.", "Calcium Carbonate", false, "Tums Inc.", "Tums", 3.50m, 4.0m, "Constipation, nausea.", "500mg" }
+                });
 
-
+            migrationBuilder.InsertData(
+                table: "ProductSpecializations",
+                columns: new[] { "ProductId", "SpecializationId" },
+                values: new object[,]
+                {
+                    { "1", 1 },
+                    { "1", 2 },
+                    { "1", 4 },
+                    { "2", 3 },
+                    { "2", 7 },
+                    { "2", 10 },
+                    { "3", 7 },
+                    { "3", 8 }
+                });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Products_CategoryId",
                 table: "Products",
                 column: "CategoryId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ProductSpecializations_SpecializationId",
+                table: "ProductSpecializations",
+                column: "SpecializationId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Reviews_DoctorId",
@@ -392,9 +437,9 @@ namespace MedicalRep.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Visits_ApplicationUserId",
+                name: "IX_Visits_DoctorId",
                 table: "Visits",
-                column: "ApplicationUserId");
+                column: "DoctorId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Visits_MedicalRepId",
@@ -405,6 +450,9 @@ namespace MedicalRep.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "ProductSpecializations");
+
             migrationBuilder.DropTable(
                 name: "Reviews");
 
